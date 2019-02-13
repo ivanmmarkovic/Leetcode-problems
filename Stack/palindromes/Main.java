@@ -9,15 +9,6 @@ public class Main {
 		System.out.println("Word level is palindrome : " + isPalindrome("level"));
 		System.out.println("Word levsel is palindrome : " + isPalindrome("levsel"));
 		
-		List list = new List();
-		String string = "This is m string!";
-		for(int i = 0; i < string.length(); i++)
-			list.addToHead(Character.toString(string.charAt(i)));
-		list.printAll();
-		list.deleteFromHead();
-		list.deleteFromTail();
-		list.printAll();
-		
 	}
 	
 	public static boolean isPalindrome(String string) {
