@@ -2,7 +2,7 @@ package stringCompression;
 
 /*
  * Given a string, write a function to compress it by 
- * shortening every sequence ofthe same character to that 
+ * shortening every sequence of the same character to that 
  * character followerd by the number of repetitions. 
  * If the compressed string is longer than the original, 
  * you should return original string 
