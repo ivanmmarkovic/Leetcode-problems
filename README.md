@@ -1,2 +1,2 @@
 # interview-question
-Interview Questions
+Solutions to various programming problems.
