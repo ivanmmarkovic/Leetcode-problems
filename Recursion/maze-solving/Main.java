@@ -1,4 +1,3 @@
-
 import java.util.Stack;
 
 public class Main {
@@ -8,80 +7,68 @@ public class Main {
 		Integer numbers[] = {0, 0};
 		stack.push(numbers);
 		
-		int matrix[][] = new int[7][7];
-		
-		// unvisited fields are marked with 0
-		for(int i = 0; i < matrix.length; i++)
-			for(int j = 0; j < matrix[i].length; j++)
-				matrix[i][j] = 0;
-		
-		
+		int matrix[][] = new int[5][5];
 		matrix[0][0] = 1; // Must be 1, it's starting position
+
 		// obstacles are marked with number 2
-		
-		matrix[0][1] = 2;
-		matrix[0][2] = 2;
-		matrix[1][5] = 2;
-		matrix[1][6] = 2;
-		matrix[2][2] = 2;
-		matrix[2][3] = 2;
-		matrix[3][1] = 2;
-		matrix[3][6] = 2;
-		matrix[4][2] = 2;
-		matrix[4][4] = 2;
-		matrix[5][1] = 2;
-		matrix[5][5] = 2;
-		matrix[5][6] = 2;
-		matrix[6][1] = 2;
-		matrix[6][3] = 2;
+		for(int i = 2; i < matrix[0].length; i++)
+			matrix[0][i] = 2;
+		matrix[1][0] = 2;
+		for(int i = 0; i < matrix[2].length; i++)
+			if(i != 2)
+				matrix[2][i] = 2;
+		for(int i = 0; i < matrix[4].length; i++)
+			if(i != 4)
+				matrix[4][i] = 2;
 		
 		
-		
-		move(stack, matrix, 0, 0);
-		
+		maze(matrix, stack);
 	}
 	
-	public static void move(Stack<Integer[]> stack, int matrix[][],int row, int col) {
-		if(row == matrix.length - 1 && col == matrix[row].length - 1)
-			System.out.println("Path found");
-		else if(stack.isEmpty())
-			System.out.println("No available path");
+	public static void maze(int matrix[][], Stack<Integer[]> stack) {
+		if(stack.isEmpty())
+			System.out.println("Can't find path");
 		else {
-			if(col < matrix[row].length - 1 && matrix[row][col + 1] == 0){ // can go right
-				matrix[row][col + 1] = 1;
-				Integer numbers[] = {row, col + 1};
-				stack.push(numbers);
-				move(stack, matrix, row, col + 1);
+			Integer coords[] = stack.peek();
+			int x = coords[0];
+			int y = coords[1];
+			Integer newCoords[] = new Integer[2];
+			if(x == matrix.length - 1 && y == matrix[x].length - 1) {
+				System.out.println("Path found");
 			}
-			else if(col > 0 && matrix[row][col -  1] == 0) { // can go left
-				matrix[row][col - 1] = 1;
-				Integer numbers[] = {row, col - 1};
-				stack.push(numbers);
-				move(stack, matrix, row, col - 1);
+			else if(y + 1 < matrix[x].length && matrix[x][y + 1] == 0) {// can go right
+				matrix[x][y + 1] = 1;
+				newCoords[0] = x;
+				newCoords[1] = y + 1;
+				stack.push(newCoords);
+				maze(matrix, stack);
 			}
-			else if(row > 0 && matrix[row - 1][col] == 0) { // can go up
-				matrix[row - 1][col] = 1;
-				Integer numbers[] = {row - 1, col};
-				stack.push(numbers);
-				move(stack, matrix, row - 1, col);
+			else if(y > 0 && matrix[x][y - 1] == 0) {// can go left
+				matrix[x][y - 1] = 1;
+				newCoords[0] = x;
+				newCoords[1] = y - 1;
+				stack.push(newCoords);
+				maze(matrix, stack);
 			}
-			else if(row < matrix.length - 1 && matrix[row + 1][col] == 0) { // can go down
-				matrix[row + 1][col] = 1;
-				Integer numbers[] = {row + 1, col};
-				stack.push(numbers);
-				move(stack, matrix, row + 1, col);
+			else if(x + 1 < matrix.length && matrix[x + 1][y] == 0){// can go down
+				matrix[x + 1][y] = 1;
+				newCoords[0] = x + 1;
+				newCoords[1] = y;
+				stack.push(newCoords);
+				maze(matrix, stack);
 			}
-			else {
+			else if(x > 0 && matrix[x][y] == 0){// can go up
+				matrix[x - 1][y] = 1;
+				newCoords[0] = x - 1;
+				newCoords[1] = y;
+				stack.push(newCoords);
+				maze(matrix, stack);
+			}
+			else { // nowhere to go
 				stack.pop();
-				if(stack.isEmpty()){
-					System.out.println("No available path");
-					return;
-				}
-				Integer nums[] = stack.peek();
-				move(stack, matrix, nums[0],  nums[1]);
+				maze(matrix, stack);
 			}
-			
 		}
 	}
-	
+
 }
