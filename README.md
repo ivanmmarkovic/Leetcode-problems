@@ -38,3 +38,5 @@ Solutions to various code and interview problems.
 [is binary tree symmetric](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/is-binary-tree-symmetric)
 
 [level order traversal](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/level-order-traversal)
+
+[tree preorder traversal no recursion dequeue](https://github.com/ivanmmarkovic/Code-problems/tree/master/Trees/tree-preorder-traversal-no-recursion-dequeue)
