@@ -10,6 +10,10 @@ class BinaryTree {
         this.rightChild = rightChild;
     }
 
+    BinaryTree(int key){
+        this.key = key;
+    }
+    
     public boolean isRoot() {
     	return this.parent == null;
     }
