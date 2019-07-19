@@ -9,7 +9,7 @@ Solutions to various code and interview problems.
 
 [Towers of Hanoi](https://github.com/ivanmmarkovic/code-problems/tree/master/Recursion/towers-of-hanoi)
 
-### Stack
+### Stacks
 
 [Palindromes](https://github.com/ivanmmarkovic/code-problems/tree/master/Stack/palindromes)
 
@@ -17,7 +17,7 @@ Solutions to various code and interview problems.
 
 [MaxStack](https://github.com/ivanmmarkovic/code-problems/tree/master/Stack/MaxStack)
 
-### String
+### Strings
 
 [Anagram](https://github.com/ivanmmarkovic/code-problems/tree/master/String/anagrams)
 
@@ -25,4 +25,16 @@ Solutions to various code and interview problems.
 
 [String Compression](https://github.com/ivanmmarkovic/code-problems/tree/master/String/stringCompression)
 
-### 
+### Trees
+
+[Contains node](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/contains-node)
+
+[Get node](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/get-node)
+
+[is binary tree balanced](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/is-binary-tree-balanced)
+
+[is binary tree binary search tree](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/is-binary-tree-binary-search-tree)
+
+[is binary tree symmetric](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/is-binary-tree-symmetric)
+
+[level order traversal](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/level-order-traversal)
