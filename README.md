@@ -40,3 +40,6 @@ Solutions to various code and interview problems.
 [level order traversal](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/level-order-traversal)
 
 [tree preorder traversal no recursion dequeue](https://github.com/ivanmmarkovic/Code-problems/tree/master/Trees/tree-preorder-traversal-no-recursion-dequeue)
+
+[tree preorder traversal no recursion stack](https://github.com/ivanmmarkovic/Code-problems/tree/master/Trees/tree-preorder-traversal-no-recursion-stack)
+
