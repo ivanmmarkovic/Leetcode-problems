@@ -39,6 +39,8 @@ Solutions to various code and interview problems.
 
 - [Level order traversal](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/level-order-traversal)
 
+- [Lowest common ancestor of a Binary Tree iterative](https://github.com/ivanmmarkovic/Code-problems/tree/master/Trees/lowest-common-ancestor-of-a-binary-tree-iterative)
+
 - [Lowest common ancestor of a Binary Tree recursive](https://github.com/ivanmmarkovic/Code-problems/tree/master/Trees/lowest-common-ancestor-of-a-binary-tree-recursive)
 
 - [Tree preorder traversal no recursion dequeue](https://github.com/ivanmmarkovic/Code-problems/tree/master/Trees/tree-preorder-traversal-no-recursion-dequeue)
