@@ -1,7 +1,7 @@
-## Code problems
+# Code problems
 Solutions to various code and interview problems.
 
-##### Recursion
+#### Recursion
 
 - [Check permutations](https://github.com/ivanmmarkovic/code-problems/tree/master/Recursion/check-permutations)
 
@@ -9,7 +9,7 @@ Solutions to various code and interview problems.
 
 - [Towers of Hanoi](https://github.com/ivanmmarkovic/code-problems/tree/master/Recursion/towers-of-hanoi)
 
-##### Stacks
+#### Stacks
 
 - [Palindromes](https://github.com/ivanmmarkovic/code-problems/tree/master/Stack/palindromes)
 
@@ -17,7 +17,7 @@ Solutions to various code and interview problems.
 
 - [MaxStack](https://github.com/ivanmmarkovic/code-problems/tree/master/Stack/MaxStack)
 
-##### Strings
+#### Strings
 
 - [Anagram](https://github.com/ivanmmarkovic/code-problems/tree/master/String/anagrams)
 
@@ -25,7 +25,7 @@ Solutions to various code and interview problems.
 
 - [String Compression](https://github.com/ivanmmarkovic/code-problems/tree/master/String/stringCompression)
 
-##### Trees
+#### Trees
 
 - [Contains node](https://github.com/ivanmmarkovic/code-problems/tree/master/Trees/contains-node)
 
