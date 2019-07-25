@@ -25,6 +25,8 @@ public class Main {
 			return true;
 		else if(btLeft == null || btRight == null)
 			return false;
+		else if(btLeft.key != btRight.key)
+			return false;
 		else {
 			return isSymmetricHelper(btLeft.leftChild, btRight.rightChild) &&
 					isSymmetricHelper(btLeft.rightChild, btRight.leftChild);
