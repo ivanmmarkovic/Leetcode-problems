@@ -20,7 +20,10 @@ public class Main {
                 tmp = bt2;
             }
         }
-        return bt1; 
+        if(found)
+            return bt1; 
+        else
+            return null;
     }
 
 }
