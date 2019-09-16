@@ -7,27 +7,21 @@ class Main {
 		
 	}
 	
-	public static boolean isBst(BinaryTree bt) {
-        boolean left = false, right = false;
-        
-        if(bt.leftChild == null)
-            left = true;
-        if(bt.leftChild != null) {
-            if(bt.leftChild.key < bt.key)
-                left = isBst(bt.leftChild);
-            else
-                left = false;
-        }
-        
-        if(bt.rightChild == null)
-            right = true;
-        if(bt.rightChild != null) {
-            if(bt.rightChild.key > bt.key)
-                right = isBst(bt.rightChild);
-            else
-                right = false;
-        }
-        
-        return left && right;
-    }
+	public static boolean isBST(BinaryTree bt) {
+		return isBSTHelper(bt, null, null);
+	}
+	
+	public static boolean isBSTHelper(BinaryTree bt, Integer min, Integer max) {
+		if(bt == null)
+			return true;
+		if(min != null && bt.key <= min)
+			return false;
+		if(max != null && bt.key >= max)
+			return false;
+		if(!isBSTHelper(bt.leftChild, min, bt.key))
+			return false;
+		if(!isBSTHelper(bt.rightChild, bt.key, max))
+			return false;
+		return true;
+	}
 }
