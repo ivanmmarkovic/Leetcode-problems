@@ -19,19 +19,13 @@ public class Main {
 	}
 	
 	public static BinaryTree lowestCommonAncestor(BinaryTree root, BinaryTree bt1, BinaryTree bt2) {
-		
-		return lowestCommonAncestorHelper(root, bt1, bt2);
-		
-	}
-	
-	public static BinaryTree lowestCommonAncestorHelper(BinaryTree root, BinaryTree bt1, BinaryTree bt2) {
 		if(root == null)
 			return null;
 		if(root.key == bt1.key || root.key == bt2.key)
 			return root;
 		
-		BinaryTree leftTree = lowestCommonAncestorHelper(root.leftChild, bt1, bt2);
-		BinaryTree rightTree = lowestCommonAncestorHelper(root.rightChild, bt1, bt2);
+		BinaryTree leftTree = lowestCommonAncestor(root.leftChild, bt1, bt2);
+		BinaryTree rightTree = lowestCommonAncestor(root.rightChild, bt1, bt2);
 		if(leftTree != null && rightTree != null)
 			return root;
 		else if(leftTree == null)
