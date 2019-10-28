@@ -19,6 +19,7 @@ public class Main {
 		System.out.println("Contains " + containsNode(bt, 40));
 	}
 	
+	/*
 	public static boolean containsNode(BinaryTree bt, int key) {
 		if(bt.key == key)
 			return true;
@@ -30,6 +31,17 @@ public class Main {
 			res2 = containsNode(bt.rightChild, key);
 		
 		return res1 || res2;
+	}
+	*/
+	public static boolean containsNode(BinaryTree bt, int key) {
+		if(bt == null)
+			return false;
+		if(bt.key == key)
+			return true;
+		boolean found = containsNode(bt.leftChild, key);
+		if(!found)
+			found = containsNode(bt.rightChild, key);
+		return found;
 	}
 	
 }
