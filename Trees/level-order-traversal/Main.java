@@ -18,6 +18,8 @@ public class Main {
 	}
 	
 	public  static void levelOrderTraversal(BinaryTree bt) {
+		if(bt == null)
+			return;
 		Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
 		queue.add(bt);
 		BinaryTree dequeued;
