@@ -30,7 +30,7 @@ public class Main {
 		 * 5. add left
 		 */
 		Stack<BinaryTree> stack = new Stack<BinaryTree>();
-		stack.add(bt);
+		stack.push(bt);
 		BinaryTree poped;
 		while(!stack.isEmpty()) {
 			poped = stack.pop();
