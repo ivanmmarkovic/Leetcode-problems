@@ -1,4 +1,4 @@
-package java.ivanmarkovic.recursion;
+package ivanmarkovic.recursion;
 
 public class TowersOfHanoi {
 
