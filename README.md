@@ -3,7 +3,11 @@ Solutions to various code and interview problems.
 
 #### Trees
 
-* [Binary Tree contains node](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/ContainsNode.java)
+* [Binary Tree - contains node](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/ContainsNode.java)
+
+* [Binary Tree - find node](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/GetNode.java)
+
+* [Binary Tree - is symmetric](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/IsSymmetric.java)
 
 #### Recursion
 
