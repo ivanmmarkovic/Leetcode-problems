@@ -6,6 +6,8 @@ import java.util.Queue;
 public class LevelOrderTraversal {
 	
 	public static void traversal(TreeNode node) {
+		if(node == null)
+			return;
 		Queue<TreeNode> queue = new LinkedList<TreeNode>();
 		TreeNode tmp;
 		queue.add(node);
