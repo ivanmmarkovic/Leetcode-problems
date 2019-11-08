@@ -31,6 +31,12 @@ Solutions to various code and interview problems.
 
 * [Maze Solving](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/recursion/MazeSolving.java)
 
+#### Strings
+
+* [Longest Common Substring](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/strings/LongestCommonSubstring.java)
+
+* [String Compression](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/strings/StringCompression.java)
+
 
 
 
