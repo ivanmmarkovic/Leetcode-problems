@@ -11,6 +11,8 @@ Solutions to various code and interview problems.
 
 * [Level order traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/LevelOrderTraversal.java)
 
+* [Preorder Traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/PreorderTraversal.java)
+
 #### Recursion
 
 * [Towers of Hanoi](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/recursion/TowersOfHanoi.java)
