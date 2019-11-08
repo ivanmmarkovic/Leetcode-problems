@@ -9,6 +9,8 @@ Solutions to various code and interview problems.
 
 * [Binary Tree - is symmetric](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/IsSymmetric.java)
 
+* [binary Tree - is balanced](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/IsBalanced.java)
+
 * [Level order traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/LevelOrderTraversal.java)
 
 * [Preorder Traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/PreorderTraversal.java)
