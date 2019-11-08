@@ -9,6 +9,8 @@ Solutions to various code and interview problems.
 
 * [Binary Tree - is symmetric](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/IsSymmetric.java)
 
+* [Level order traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/LevelOrderTraversal.java)
+
 #### Recursion
 
 * [Towers of Hanoi](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/recursion/TowersOfHanoi.java)
