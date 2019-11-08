@@ -3,7 +3,7 @@ package ivanmarkovic.codingproblems.strings;
 import java.util.Arrays;
 
 /*
- * Given two strings, write a function to determine wheter 
+ * Given two strings, write a function to determine whether 
  * they are anagrams
  */
 public class Anagrams {
