@@ -13,6 +13,10 @@ Solutions to various code and interview problems.
 
 * [Preorder Traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/PreorderTraversal.java)
 
+* [Inorder Traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/InorderTraversal.java)
+
+* [Postorder Traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/PostorderTraversal.java)
+
 #### Recursion
 
 * [Towers of Hanoi](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/recursion/TowersOfHanoi.java)
