@@ -6,6 +6,14 @@ import java.util.Stack;
 
 public class PreorderTraversal {
 	
+	public static void preorderTraversalRecursive(TreeNode node) {
+		if(node != null) {
+			System.out.println(node.key);
+			preorderTraversalRecursive(node.leftChild);
+			preorderTraversalRecursive(node.rightChild);
+		}
+	}
+	
 	// using Stack
 	public static void preorderTraversalStack(TreeNode node) {
 		if(node == null)
