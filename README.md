@@ -37,6 +37,8 @@ Solutions to various code and interview problems.
 
 * [String Compression](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/strings/StringCompression.java)
 
+* [Anagrams](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/strings/Anagrams.java)
+
 
 
 
