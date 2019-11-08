@@ -13,6 +13,8 @@ Solutions to various code and interview problems.
 
 * [Binary Tree - is Binary Search Tree](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/ValidateBinaryTree.java)
 
+* [Lowest Common Ancestor](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/LowestCommonAncestor.java)
+
 * [Level order traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/LevelOrderTraversal.java)
 
 * [Preorder Traversal](https://github.com/ivanmmarkovic/Code-problems/blob/master/codingproblems/src/main/java/ivanmarkovic/codingproblems/trees/PreorderTraversal.java)
