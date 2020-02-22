@@ -51,8 +51,8 @@ public class PathSum2 {
 	private void helper(TreeNode root, List<List<Integer>> result, List<Integer> currentList, int currentSum, int targetSum) {
 		if(root == null)
 			return;
-		currentSum += root.value;
-		currentList.add(root.value);
+		currentSum += root.val;
+		currentList.add(root.val);
 		if(root.left == null && root.right == null) {
 			if(currentSum == targetSum)
 				result.add(currentList);
@@ -62,5 +62,6 @@ public class PathSum2 {
 		List<Integer> rightList = currentList.stream().collect(Collectors.toList());
 		helper(root.left, result, leftList, currentSum, targetSum);
 		helper(root.right, result, rightList, currentSum, targetSum);
+    }
 
 }
