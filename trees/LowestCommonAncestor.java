@@ -13,6 +13,7 @@ public class LowestCommonAncestor {
 		
 	}
 	
+	// time O(n), space O(h) height of the tree 
 	public TreeNode lca(TreeNode root, TreeNode node1, TreeNode node2) {
 		if(root == null)
 			return root;
@@ -28,6 +29,7 @@ public class LowestCommonAncestor {
 			return left;
 	}
 	
+	// O(n2)
 	public TreeNode lcaIterative(TreeNode root, TreeNode node1, TreeNode node2) {
 		TreeNode tmp;
 		boolean found = false;
@@ -45,5 +47,24 @@ public class LowestCommonAncestor {
 		return node1;
 	}
 
+	// O(n)
+	public TreeNode lcaIterativeWithSet(TreeNode root, TreeNode node1, TreeNode node2) {
+		Set<TreeNode> visited = new HashSet<TreeNode>();
+		while(node1 != null) {
+			visited.add(node1);
+			node1 = node1.parent;
+		}
+		boolean found = false;
+		while(node2 != null && !found) {
+			if(visited.contains(node2))
+				found = true;
+			else
+				node2 = node2.parent;
+		}
+		if(found)
+			return node2;
+		else
+			return null;
+	}
 
 }
