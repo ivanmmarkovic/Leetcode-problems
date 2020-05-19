@@ -1,4 +1,4 @@
-package strings;
+
 import java.util.Stack;
 
 /*
