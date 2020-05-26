@@ -6,6 +6,9 @@ Easy
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Duplicates from Sorted Array.
+Memory Usage: 41.4 MB, less than 19.15% of Java online submissions for Remove Duplicates from Sorted Array.
+
 Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
 
 Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
