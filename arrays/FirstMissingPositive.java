@@ -1,3 +1,4 @@
+import java.util.Set;
 import java.util.TreeSet;
 
 /*
@@ -6,8 +7,8 @@ Hard
 
 https://leetcode.com/problems/first-missing-positive/
 
-Runtime: 2 ms, faster than 9.14% of Java online submissions for First Missing Positive.
-Memory Usage: 37.7 MB, less than 6.85% of Java online submissions for First Missing Positive.
+Runtime: 2 ms, faster than 12.32% of Java online submissions for First Missing Positive.
+Memory Usage: 37.3 MB, less than 6.85% of Java online submissions for First Missing Positive.
 
 Given an unsorted integer array, find the smallest missing positive integer.
 
@@ -39,32 +40,21 @@ Submissions
 
 class FirstMissingPositive {
     public int firstMissingPositive(int[] nums) {
-        if(nums.length == 0)
-            return 1;
-        
-        TreeSet<Integer> visited = new TreeSet<>();
-        
-        for(int i = 0; i < nums.length; i++)
+        Set<Integer> positive = new TreeSet<Integer>();
+        for (int i = 0; i < nums.length; i++) {
             if(nums[i] > 0)
-                visited.add(nums[i]);
+                positive.add(nums[i]);
+        }
         
-        boolean missingExists = false;
-        int prev = 0, result = -1;
-        
-        if(visited.size() == 0)
-            return 1;
-        
-        for(int e: visited){
-            if(prev + 1 != e){
-                result = prev + 1;
-                missingExists = true;
+        int start = 0;
+        int result = 0;
+        for (int item : positive) {
+            if(start + 1 != item) {
+                result = start + 1;
                 break;
             }
-            else{
-                prev = e;
-                result = e;
-            }
+            start += 1;
         }
-        return missingExists ? result : result + 1;
+        return result == 0 ? start + 1 : result;
     }
 }
