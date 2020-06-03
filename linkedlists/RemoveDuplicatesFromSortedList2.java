@@ -34,6 +34,7 @@ public class RemoveDuplicatesFromSortedList2 {
 				elements.put(tmp.val, elements.get(tmp.val) + 1);
 			else
 				elements.put(tmp.val, 1);
+			tmp = tmp.next;
 		}
 		ListNode current = head;
 		while(current.next != null) {
