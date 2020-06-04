@@ -43,6 +43,43 @@ class ReverseLinkedListII {
 	    }
 	}
 
+    // this might be better/cleaner solution, same speed and memory
+    public ListNode reverseBetween2(ListNode head, int m, int n) {
+        
+        int i = 1;
+        ListNode prev = null, next = null;
+        ListNode toReverse = new ListNode(0);
+        ListNode tmpToReverse = toReverse;
+        ListNode tmp = head;
+        while(i <= n){
+            if(i == m - 1)
+                prev = tmp;
+            if(i == n){
+                next = tmp.next;
+            }
+            if(i >= m && i <= n){
+                tmpToReverse.next = tmp;
+                tmpToReverse = tmpToReverse.next;
+            }
+            i++;
+            tmp = tmp.next;
+        }
+        toReverse = toReverse.next;
+        tmpToReverse.next = null;
+        if(prev == null){
+            head = reverseList(toReverse);
+            prev = head;
+        }
+        else
+            prev.next = reverseList(toReverse);
+
+        while(prev.next != null)
+            prev = prev.next;
+        prev.next = next;
+        
+        return head;
+    }
+
     public ListNode reverseBetween(ListNode head, int m, int n) {
         if(head == null)
             return null;
