@@ -38,7 +38,8 @@ Output: 3500.00000
 */
 class AverageSalaryExcludingTheMinimumAndMaximumSalary {
     public double average(int[] salary) {
-
+        /*
+        this solution is wrong, what if array has 2 elements?
     	if(salary == null || salary.length == 0 || salary.length == 1)
             return new Double(0);
         
@@ -54,6 +55,27 @@ class AverageSalaryExcludingTheMinimumAndMaximumSalary {
         }
         
         return new Double(sum - (min + max)) / new Double(salary.length - 2);
+        */
+        if(salary == null || salary.length <= 2)
+            return 0;
+        
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        
+        for(int s: salary) {
+            if(s < min)
+                min = s;
+            if(s > max)
+                max = s;
+        }
+        
+        int sum = 0;
+        for(int s: salary) {
+            if(s != min || s != max)
+                sum += s;
+        }
+        
+        return sum / salary.length - 2;
         
     }
 }
