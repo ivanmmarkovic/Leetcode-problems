@@ -1,8 +1,5 @@
 package linkedlists;
 
-import linkedlists.Recap.ListNode;
-import linkedlists.Recap.TreeNode;
-
 /*
 
 1367. Linked List in Binary Tree
