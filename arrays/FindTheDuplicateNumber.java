@@ -49,4 +49,23 @@ class FindTheDuplicateNumber {
         }
         return result;
     }
+    
+    /*
+    Runtime: 3 ms, faster than 28.04% of Java online submissions for Find the Duplicate Number.
+	Memory Usage: 38.9 MB, less than 99.29% of Java online submissions for Find the Duplicate Number.
+    */
+    public int findDuplicateII(int[] nums) {
+        
+        Arrays.sort(nums);
+        int result = -1;
+        for(int i = 0; i < nums.length - 1; i++){
+            if(nums[i] == nums[i + 1]){
+                result = nums[i];
+                break;
+            }
+        }
+        
+        return result;
+        
+    }
 }
