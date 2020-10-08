@@ -40,6 +40,7 @@ public class ConvertBinarySearchTreeToSortedDoublyLinkedList {
 		if(root != null) {
 			inorder(root.left, tmp);
 			tmp.next = new ListNode(root.val);
+			tmp = tmp.next;
 			inorder(root.right, tmp);
 		}
 	}
