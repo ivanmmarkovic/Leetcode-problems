@@ -1,4 +1,3 @@
-package strings;
 /*
 187. Repeated DNA Sequences
 Medium
