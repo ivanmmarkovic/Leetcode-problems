@@ -1,4 +1,3 @@
-package cache.lrucache;
 
 import java.util.HashMap;
 /*
