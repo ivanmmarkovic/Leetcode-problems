@@ -6,8 +6,8 @@ Medium
 
 https://leetcode.com/problems/lru-cache/
  
-Runtime: 13 ms, faster than 72.90% of Java online submissions for LRU Cache.
-Memory Usage: 47.1 MB, less than 9.10% of Java online submissions for LRU Cache.
+Runtime: 12 ms, faster than 95.40% of Java online submissions for LRU Cache.
+Memory Usage: 46.8 MB, less than 9.10% of Java online submissions for LRU Cache.
 
 Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
