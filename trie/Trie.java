@@ -5,6 +5,9 @@ Medium
 
 https://leetcode.com/problems/implement-trie-prefix-tree/
 
+Runtime: 38 ms, faster than 38.13% of Java online submissions for Implement Trie (Prefix Tree).
+Memory Usage: 50.4 MB, less than 5.10% of Java online submissions for Implement Trie (Prefix Tree).
+
 Implement a trie with insert, search, and startsWith methods.
 
 Example:
