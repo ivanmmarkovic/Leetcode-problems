@@ -39,29 +39,23 @@ Submissions
 
 class PascalsTriangle {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> result = new ArrayList<>(numRows);
-        
-        
-        List<Integer> tmp;
-        int size = 1;
-        for(int row = 0; row < numRows; row++){
-            tmp = new ArrayList<>();
-            tmp.add(0, 1);
-            
-            
-            if(row >= 2){
-                List<Integer> prev = result.get(row - 1);
-                for(int j = 1; j < size - 1; j++){
-                    tmp.add(j, prev.get(j - 1) + prev.get(j));
-                }
-            }
-            if(size > 1)
-                tmp.add(1);
-            result.add(tmp);
-            size++;
-            
-        }
-        
-        return result;
+        List<List<Integer>> triangle = new ArrayList<>();
+
+		List<Integer> row;
+		List<Integer> prevRow;
+		for (int i = 0; i < numRows; i++) {
+			row = new ArrayList<>();
+			row.add(0, 1);
+			triangle.add(row);
+			if (i == 0) // eliminate first row, has only one 1
+				continue;
+			prevRow = triangle.get(i - 1);
+			for (int j = 1; j < i; j++) {
+				row.add(j, prevRow.get(j - 1) + prevRow.get(j));
+			}
+			row.add(1);
+		}
+
+		return triangle;
     }
 }
