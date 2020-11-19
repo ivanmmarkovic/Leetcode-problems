@@ -72,4 +72,23 @@ public class LinkedListCycle {
         }
         return cycleFound;
     }
+	
+    /*
+    Runtime: 0 ms, faster than 100.00% of Java online submissions for Linked List Cycle.
+    Memory Usage: 39.3 MB, less than 44.67% of Java online submissions for Linked List Cycle.
+    */
+    public boolean hasCycleBetter(ListNode head) {
+        if(head == null || head.next == null)
+            return false;
+        
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast)
+                return true;
+        }
+        return false;
+    }
 }
