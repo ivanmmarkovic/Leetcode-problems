@@ -1,4 +1,6 @@
-﻿import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 /*
 430. Flatten a Multilevel Doubly Linked List
@@ -62,6 +64,30 @@ class FlattenAMultilevelDoublyLinkedList {
                 tmp.next = null;
         }
         return head;
+    }
+	
+    public Node flatten2(Node head) {
+        Queue<Node> q = new LinkedList<>();
+        addNodes(head, q);
+        Node tmp = null;
+        while(!q.isEmpty()){
+            tmp = q.poll();
+            tmp.next = q.peek() != null ? q.peek() : null;
+            if(q.peek() != null)
+                q.peek().prev = tmp;
+        }
+        return head;
+    }
+    
+    private void addNodes(Node node, Queue<Node> q){
+        if(node == null)
+            return;
+        q.add(node);
+        if(node.child != null){
+            addNodes(node.child, q);
+            node.child = null;
+        }
+        addNodes(node.next, q);
     }
     
 }
