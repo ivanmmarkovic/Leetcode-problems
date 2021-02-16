@@ -58,8 +58,10 @@ public class LowestCommonAncestor {
 		while(node2 != null && !found) {
 			if(visited.contains(node2))
 				found = true;
-			else
+			else{
+				visited.add(node2);
 				node2 = node2.parent;
+			}
 		}
 		if(found)
 			return node2;
