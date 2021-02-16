@@ -5,8 +5,9 @@ Easy
 
 https://leetcode.com/problems/n-ary-tree-preorder-traversal/
 
-Runtime: 1 ms, faster than 62.25% of Java online submissions for N-ary Tree Preorder Traversal.
-Memory Usage: 43.4 MB, less than 6.14% of Java online submissions for N-ary Tree Preorder Traversal.
+Runtime: 0 ms, faster than 100.00% of Java online submissions for N-ary Tree Preorder Traversal.
+Memory Usage: 39.9 MB, less than 41.66% of Java online submissions for N-ary Tree Preorder Traversal.
+
 
 Given an n-ary tree, return the preorder traversal of its nodes' values.
 
@@ -65,17 +66,16 @@ class  NaryTreePreorderTraversal {
 	    }
 	}
     public List<Integer> preorder(Node root) {
-        List<Integer> vals = new ArrayList<>();
-        helper(root, vals);
-        return vals;
-    }
-    
-    private void helper(Node root, List<Integer> vals){
-        while(root != null){
-            vals.add(root.val);
-            for(Node child: root.children)
-                helper(child, vals);
-            root = null;
-        }
-    }
+		List<Integer> vals = new ArrayList<>();
+		helper(root, vals);
+		return vals;
+	}
+
+	private void helper(Node root, List<Integer> vals) {
+		if (root == null)
+			return;
+		vals.add(root.val);
+		for (Node child : root.children)
+			helper(child, vals);
+	}
 }
