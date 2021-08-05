@@ -55,6 +55,7 @@ class FirstMissingPositive {
 		}
 		return ++number;
 	}
+	
     /*
     public int firstMissingPositive(int[] nums) {
         Set<Integer> positive = new TreeSet<Integer>();
