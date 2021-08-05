@@ -39,6 +39,23 @@ Submissions
 
 
 class FirstMissingPositive {
+    
+    public int firstMissingPositive(int[] nums) {
+		Set<Integer> vals = new HashSet<>();
+		for(int i: nums)
+			if(i > 0)
+				vals.add(i);
+		
+		int number = 0;
+		for(Integer v: vals) {
+			if(vals.contains(number + 1))
+				number++;
+			else
+				return number + 1;
+		}
+		return ++number;
+	}
+    /*
     public int firstMissingPositive(int[] nums) {
         Set<Integer> positive = new TreeSet<Integer>();
         for (int i = 0; i < nums.length; i++) {
@@ -57,4 +74,5 @@ class FirstMissingPositive {
         }
         return result == 0 ? start + 1 : result;
     }
+    */
 }
