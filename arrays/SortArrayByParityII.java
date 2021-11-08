@@ -77,4 +77,32 @@ public class SortArrayByParityII {
 
 		return nums;
 	}
+	
+	public int[] sortArrayByParityIIV2(int[] nums) {
+
+		int start = 0;
+		int end = nums.length - 1;
+		// move odd numbers to right side of array
+		while(end > start){
+			if(nums[start] % 2 != 0){
+				int tmp = nums[end];
+				nums[end] = nums[start];
+				nums[start] = tmp;
+				end--;
+			}
+			else
+				start++;
+		}
+
+		start = 1; // first number is even
+		end = nums.length - 2; // last number is odd
+		while(start < end){
+			int tmp = nums[start];
+			nums[start] = nums[end];
+			nums[end] = tmp;
+			start += 2;
+			end -= 2;
+		}
+		return nums;
+	}
 }
