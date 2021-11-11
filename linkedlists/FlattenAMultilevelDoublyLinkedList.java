@@ -89,5 +89,34 @@ class FlattenAMultilevelDoublyLinkedList {
         }
         addNodes(node.next, q);
     }
+	
+    public Node flatten3(Node head) {
+        if(head == null)
+            return null;
+        Stack<Node> stack = new Stack<>();
+		flattenHelper(head, stack);
+		Node result = new Node();
+		Node r = result;
+		while (!stack.isEmpty()){
+			Node n = stack.pop();
+			r.next = n;
+			n.prev = r;
+			n.next = null;
+			r = n;
+		}
+        result.next.prev = null;
+		return result.next;
+	}
+
+	private void flattenHelper(Node head, Stack<Node> stack) {
+		if(head == null)
+			return;
+		flattenHelper(head.next, stack);
+		if(head.child != null)
+			flattenHelper(head.child, stack);
+        head.next = head.prev = head.child = null;
+		stack.push(head);
+        
+    }
     
 }
