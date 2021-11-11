@@ -1,3 +1,5 @@
+package linkedlists;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -24,8 +26,9 @@ Explanation:
 
 */
 
-class FlattenAMultilevelDoublyLinkedList {
 
+class FlattenAMultilevelDoublyLinkedList {
+	
 	class Node {
 	    public int val;
 	    public Node prev;
@@ -41,8 +44,42 @@ class FlattenAMultilevelDoublyLinkedList {
 	        child = _child;
 	    }
 	}
-
-    public Node flatten(Node head) {
+	
+	// the easiest solution
+	public Node flatten(Node head) {
+        if(head == null)
+            return head;
+        
+        Stack<Node> stack = new Stack<>();
+        traversal(head, stack);
+        
+        while(!stack.isEmpty()){
+            head = stack.pop();
+            head.child = null;
+            if(!stack.isEmpty()){
+                head.prev = stack.peek();
+                stack.peek().next = head;
+            }
+            else
+                head.prev = null;
+        }
+        
+        return head;
+        
+    }
+    
+    void traversal(Node head, Stack<Node> stack){
+        if(head == null)
+            return;
+        stack.push(head);
+        if(head.child != null)
+            traversal(head.child, stack);
+        traversal(head.next, stack);
+        
+    }
+	
+	
+    public Node flatten1(Node head) {
         if(head == null)
             return head;
         Stack<Node> stack = new Stack<Node>();
@@ -65,7 +102,7 @@ class FlattenAMultilevelDoublyLinkedList {
         }
         return head;
     }
-	
+    
     public Node flatten2(Node head) {
         Queue<Node> q = new LinkedList<>();
         addNodes(head, q);
@@ -89,34 +126,61 @@ class FlattenAMultilevelDoublyLinkedList {
         }
         addNodes(node.next, q);
     }
-	
+
     public Node flatten3(Node head) {
         if(head == null)
             return null;
         Stack<Node> stack = new Stack<>();
-		flattenHelper(head, stack);
-		Node result = new Node();
-		Node r = result;
-		while (!stack.isEmpty()){
-			Node n = stack.pop();
-			r.next = n;
-			n.prev = r;
-			n.next = null;
-			r = n;
-		}
+        flattenHelper(head, stack);
+        Node result = new Node();
+        Node r = result;
+        while (!stack.isEmpty()){
+            Node n = stack.pop();
+            r.next = n;
+            n.prev = r;
+            n.next = null;
+            r = n;
+        }
         result.next.prev = null;
-		return result.next;
-	}
+        return result.next;
+    }
 
-	private void flattenHelper(Node head, Stack<Node> stack) {
-		if(head == null)
-			return;
-		flattenHelper(head.next, stack);
-		if(head.child != null)
-			flattenHelper(head.child, stack);
+    private void flattenHelper(Node head, Stack<Node> stack) {
+        if(head == null)
+            return;
+        flattenHelper(head.next, stack);
+        if(head.child != null)
+            flattenHelper(head.child, stack);
         head.next = head.prev = head.child = null;
-		stack.push(head);
-        
+        stack.push(head);
+
+    }
+
+    public Node flatten4(Node head) {
+        if(head == null)
+            return null;
+        Queue<Node> q = new LinkedList<>();
+        flattenHelper4(head, q);
+        Node result = new Node();
+        Node r = result;
+        while (!q.isEmpty()){
+            Node polled = q.poll();
+            r.next = polled;
+            polled.prev = r;
+            r = polled;
+        }
+        result.next.prev = null;
+        return result.next;
+    }
+
+    private void flattenHelper4(Node head, Queue<Node> q) {
+        if(head == null)
+            return;
+        q.add(head);
+        if(head.child != null)
+            flattenHelper4(head.child, q);
+        flattenHelper4(head.next, q);
+        head.prev = head.next = head.child = null;
     }
     
 }
