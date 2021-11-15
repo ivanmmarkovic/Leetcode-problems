@@ -116,7 +116,72 @@ class ReverseLinkedListII {
         before.next = after;
         return head;
     }
-    
+	
+    public ListNode reverseBetween2(ListNode head, int m, int n) {
+        
+        int i = 1;
+        ListNode prev = null, next = null;
+        ListNode toReverse = new ListNode(0);
+        ListNode tmpToReverse = toReverse;
+        ListNode tmp = head;
+        while(i <= n){
+            if(i == m - 1)
+                prev = tmp;
+            if(i == n){
+                next = tmp.next;
+            }
+            if(i >= m && i <= n){
+                tmpToReverse.next = tmp;
+                tmpToReverse = tmpToReverse.next;
+            }
+            i++;
+            tmp = tmp.next;
+        }
+        toReverse = toReverse.next;
+        tmpToReverse.next = null;
+        if(prev == null){
+            head = reverseList(toReverse);
+            prev = head;
+        }
+        else
+            prev.next = reverseList(toReverse);
+
+        while(prev.next != null)
+            prev = prev.next;
+        prev.next = next;
+        
+        return head;
+    }
+	
+    public ListNode reverseBetween3(ListNode head, int left, int right) {
+
+        ListNode before = null, first = null, last = null, after = null, tmp = head;
+        int count = 1;
+        while(tmp != null){
+            if(count == left - 1)
+                before = tmp;
+            if(count == left){
+                first = tmp;
+            }
+            else if(count == right){
+                last = tmp;
+                after = last.next;
+                last.next = null;
+                ListNode reversed = reverseList(first);
+                if(before == null)
+                    head = reversed;
+                else
+                    before.next = reversed;
+                while(reversed.next != null)
+                    reversed = reversed.next;
+                reversed.next = after;
+                break;
+            }
+            count++;
+            tmp = tmp.next;
+        }
+        return head;
+    }
     public ListNode reverseList(ListNode head) {
         if(head == null)
             return null;
