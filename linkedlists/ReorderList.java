@@ -87,5 +87,38 @@ public void reorderList(ListNode head) {
         head = reordered.get(0);
         
     }
+    
+    /*
+    Runtime: 2 ms, faster than 57.57% of Java online submissions for Reorder List.
+    Memory Usage: 41.3 MB, less than 93.35% of Java online submissions for Reorder List.
+    */
+    public void reorderList2(ListNode head) {
+        if(head == null)
+            return;
+        if(head.next == null)
+            return;
+        
+        ListNode current = head;
+        List<ListNode> nodes = new ArrayList<>();
+        while(current != null){
+            nodes.add(current);
+            current = current.next;
+        }
+        
+        int start = 0, end = nodes.size() - 1;
+        ListNode h = head;
+        while(start < end){
+            h.next = nodes.get(start++);
+            h = h.next;
+            h.next = nodes.get(end--);
+            h = h.next;
+        }
+        if(start == end){
+            h.next = nodes.get(start);
+            h = h.next;
+        }
+        h.next = null;
+        head = nodes.get(0);
+    }
 
 }
