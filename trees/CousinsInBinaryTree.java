@@ -78,6 +78,8 @@ public class CousinsInBinaryTree {
 		Map<Integer, Integer> parents = new HashMap<>();
 
 		traverse(root, null, 0, levels, parents);
+		if(!levels.containsKey(x) || !levels.containsKey(y))
+			return false;
 
 		return levels.get(x) == levels.get(y) && parents.get(x) != parents.get(y);
 	}
