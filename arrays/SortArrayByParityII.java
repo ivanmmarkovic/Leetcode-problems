@@ -48,7 +48,68 @@ Submissions
 
 */
 public class SortArrayByParityII {
+	
 	public int[] sortArrayByParityII(int[] nums) {
+
+		int start = 0, end = nums.length - 1, pointer = 0;
+		while(pointer <= end) {
+			if(nums[pointer] % 2 == 0) {
+				int tmp = nums[start];
+				nums[start] = nums[pointer];
+				nums[pointer] = tmp;
+				start++;
+				pointer++;
+			}
+			else {
+				int tmp = nums[end];
+				nums[end] = nums[pointer];
+				nums[pointer] = tmp;
+				end--;
+			}
+		}
+		
+		start = 1; 
+		end = nums.length - 2;
+		while(start < end) {
+			int tmp = nums[start];
+			nums[start] = nums[end];
+			nums[end] = tmp;
+			start += 2;
+			end -= 2;
+		}
+        
+        return nums;
+	}
+
+	public int[] sortArrayByParityIIV2(int[] nums) {
+
+		int start = 0;
+		int end = nums.length - 1;
+		// move odd numbers to right side of array
+		while(end > start){
+			if(nums[start] % 2 != 0){
+				int tmp = nums[end];
+				nums[end] = nums[start];
+				nums[start] = tmp;
+				end--;
+			}
+			else
+				start++;
+		}
+
+		start = 1; // first number is even
+		end = nums.length - 2; // last number is odd
+		while(start < end){
+			int tmp = nums[start];
+			nums[start] = nums[end];
+			nums[end] = tmp;
+			start += 2;
+			end -= 2;
+		}
+		return nums;
+	}
+	
+	public int[] sortArrayByParityIIV3(int[] nums) {
 
 		int start = 0, end = nums.length - 1;
 		while (start < end) {
@@ -75,34 +136,6 @@ public class SortArrayByParityII {
 			end -= 2;
 		}
 
-		return nums;
-	}
-	
-	public int[] sortArrayByParityIIV2(int[] nums) {
-
-		int start = 0;
-		int end = nums.length - 1;
-		// move odd numbers to right side of array
-		while(end > start){
-			if(nums[start] % 2 != 0){
-				int tmp = nums[end];
-				nums[end] = nums[start];
-				nums[start] = tmp;
-				end--;
-			}
-			else
-				start++;
-		}
-
-		start = 1; // first number is even
-		end = nums.length - 2; // last number is odd
-		while(start < end){
-			int tmp = nums[start];
-			nums[start] = nums[end];
-			nums[end] = tmp;
-			start += 2;
-			end -= 2;
-		}
 		return nums;
 	}
 }
