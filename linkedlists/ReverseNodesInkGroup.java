@@ -52,39 +52,46 @@ public class ReverseNodesInkGroup {
 		}
 	}
 	
-public ListNode reverseKGroup(ListNode head, int k) {
-        
-        ListNode tmp = head;
-        ListNode first = null, last = null, prev = null, after = null;
-        int count = 1;
-        while(tmp != null){
-            if(count == 1){
-                first = tmp;
-            }
-            if(count == k){
-                last = tmp;
-                after = last.next;
-                last.next = null;
-                ListNode reversed = reverseList(first);
-                if(prev != null)
-                    prev.next = reversed;
-                else
-                    head = reversed;
-                while(reversed.next != null)
-                    reversed = reversed.next;
-                reversed.next = after;
-                prev = reversed;
-                tmp = after;
-                count = 1;
-            }
-            else{
-                tmp = tmp.next;
-                count++;
-            }
-        }
-        return head;
-        
-    }
+    public ListNode reverseKGroup(ListNode head, int k) {
+		
+		ListNode before = null, first = null, last = null, after = null;
+		ListNode current = head;
+		int count = 1;
+		while(current != null) {
+			if(count == 1) {
+				first = current;
+				current = current.next;
+				count++;
+			}
+			else if(count == k) {
+				last = current;
+				after = last.next;
+				last.next = null;
+				ListNode reversed = reverseList(first);
+				if(before == null) {
+					head = reversed;
+				}
+				else {
+					before.next = reversed;
+				}
+				while(reversed.next != null) {
+					reversed = reversed.next;
+				}
+				reversed.next = after;
+				
+				before = reversed;
+				current = after;
+				count = 1;
+			}
+			else {
+				current = current.next;
+				count++;
+			}
+		}
+		
+		return head;
+		
+	}
     
     public ListNode reverseList(ListNode head) {
 		Stack<ListNode> stack = new Stack<ListNode>();
