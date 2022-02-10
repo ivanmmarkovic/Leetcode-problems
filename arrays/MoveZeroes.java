@@ -43,4 +43,47 @@ class MoveZeroes {
             nums[i] = copied[i];
         }
     }
+    /*
+    
+    Runtime: 0 ms, faster than 100.00% of Java online submissions for Move Zeroes.
+    Memory Usage: 39.5 MB, less than 35.13% of Java online submissions for Move Zeroes.
+    
+    public void moveZeroes(int[] nums) {
+
+		int start = 0, forward = 0;
+
+		while (forward < nums.length) {
+			if (nums[forward] == 0)
+				forward++;
+			else {
+				nums[start++] = nums[forward++];
+			}
+		}
+
+		while (start < nums.length)
+			nums[start++] = 0;
+
+	}
+	
+	 
+	Slower solution 
+	
+	Runtime: 2 ms, faster than 68.27% of Java online submissions for Move Zeroes.
+	Memory Usage: 55.3 MB, less than 5.74% of Java online submissions for Move Zeroes.
+	
+	public void moveZeroes(int[] nums) {
+		int left = 0, right = 0;
+		while(right < nums.length) {
+			if(nums[right] == 0)
+				right++;
+			else {
+				int tmp = nums[right];
+				nums[right] = nums[left];
+				nums[left] = tmp;
+				left++;
+				right++;
+			}
+		}
+	}
+	*/
 }
