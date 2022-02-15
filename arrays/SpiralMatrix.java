@@ -51,54 +51,36 @@ Tests
 */
 class SpiralMatrix {
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> result = new ArrayList<Integer>();
-        
-        if(matrix.length == 0)
-            return result;
-        if(matrix[0].length == 1){
-            for(int i = 0; i < matrix.length; i++){
-                result.add(matrix[i][0]);
-            }
-            return result;
-        }
-        int left = 0;
-        int right = matrix[0].length - 1;
-        int top = 0;
-        int bottom = matrix.length - 1;
+        List<Integer> vals = new ArrayList<>();
+        if(matrix == null)
+         return vals;
 
-        while(left < right && top < bottom){
-            for(int i = left; i <= right; i++){
-                result.add(matrix[left][i]);
-            }
-            top += 1;
-            for(int i = top; i <= bottom; i++){
-                result.add(matrix[i][right]);
-            }
-            right -= 1;
-            for(int i = right; i >= left; i--){
-                result.add(matrix[bottom][i]);
-            }
-            bottom -= 1;
-            for(int i = bottom; i >= top; i--){
-                result.add(matrix[i][left]);
-            }
-            left += 1;
+        int left = 0, right = matrix[0].length - 1, 
+          top = 00, bottom = matrix.length - 1;
+        while (left < right && top < bottom) {
+         for(int i = left; i <= right; i++)
+          vals.add(matrix[top][i]);
+         top++;
+         for(int i = top; i <= bottom; i++)
+          vals.add(matrix[i][right]);
+         right--;
+         for(int i = right; i >= left; i--)
+          vals.add(matrix[bottom][i]);
+         bottom--;
+         for(int i = bottom; i >= top; i--)
+          vals.add(matrix[i][left]);
+         left++;
         }
-        
-        if(left == right && top == bottom){
-            result.add(matrix[left][top]);
-        }
-        
-        if(top == bottom && left != right){
-            for(int i = left; i <= right; i++)
-                result.add(matrix[top][i]);
-        }
-        
-        if(left == right && top != bottom){
-            for(int i = top; i <= bottom; i++)
-                result.add(matrix[i][left]);
-        }
-        
-        return result;
+
+        if(left == right && top == bottom)
+         vals.add(matrix[left][top]);
+        else if(left == right && top < bottom)
+         for(int i = top; i <= bottom; i++)
+          vals.add(matrix[i][left]);
+        else if(left < right && top == bottom)
+         for(int i = left; i <= right; i++)
+          vals.add(matrix[top][i]);
+
+        return vals;
     }
 }
