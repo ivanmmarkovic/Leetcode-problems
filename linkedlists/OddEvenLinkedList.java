@@ -4,8 +4,10 @@ package linkedlists;
 328. Odd Even Linked List
 Medium
 
+https://leetcode.com/problems/odd-even-linked-list
+
 Runtime: 0 ms, faster than 100.00% of Java online submissions for Odd Even Linked List.
-Memory Usage: 39.4 MB, less than 5.00% of Java online submissions for Odd Even Linked List.
+Memory Usage: 44 MB, less than 71.36% of Java online submissions for Odd Even Linked List.
 
 Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
 
@@ -41,30 +43,18 @@ class OddEvenLinkedList {
 	}
 
 	public ListNode oddEvenList(ListNode head) {
-        if(head == null || head.next == null)
-			return head;
-		ListNode even = head;
-		ListNode evenTmp = even;
-		ListNode odd = even.next;
-		ListNode oddTmp = odd;
-		while (evenTmp != null && oddTmp != null) {
-			evenTmp.next = oddTmp.next;
-			oddTmp.next = oddTmp.next == null ? null : oddTmp.next.next;
-			
-			evenTmp = evenTmp.next;
-			oddTmp = oddTmp.next;
-		}
 		
-		if(evenTmp != null)
-			evenTmp.next = odd;
-		else {
-			evenTmp = even;
-			while (evenTmp.next != null) {
-				evenTmp = evenTmp.next;
-			}
-			evenTmp.next = odd;
+		ListNode left = new ListNode(0), l = left;
+		ListNode right = new ListNode(0), r = right;
+		while(head != null) {
+			l.next = head;
+			r.next = head.next;
+			l = l.next;
+			r = r.next;
+			
+			head = head.next == null ? null : head.next.next;
 		}
-		return even;
-        
-    }
+		l.next = right.next;
+		return left.next;
+	}
 }
