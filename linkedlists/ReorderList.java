@@ -1,16 +1,13 @@
 package linkedlists;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
 143. Reorder List
 Medium
 
 https://leetcode.com/problems/reorder-list/
 
-Runtime: 9 ms, faster than 7.02% of Java online submissions for Reorder List.
-Memory Usage: 52.2 MB, less than 5.38% of Java online submissions for Reorder List.
+Runtime: 1 ms, faster than 99.94% of Java online submissions for Reorder List.
+Memory Usage: 45 MB, less than 90.16% of Java online submissions for Reorder List.
 
 You are given the head of a singly linked-list. The list can be represented as:
 
@@ -52,73 +49,40 @@ public class ReorderList {
 		}
 	}
 	
-public void reorderList(ListNode head) {
-        
-        List<ListNode> list = new ArrayList<>();
-        
-        ListNode tmp = head;
-        while(tmp != null){
-            list.add(tmp);
-            tmp = tmp.next;
-        }
-        
-        List<ListNode> reordered = new ArrayList<>();
-        
-        int left = 0, right = list.size() - 1;
-        boolean leftFirst = true;
-        while(left < right){
-            if(leftFirst){
-                reordered.add(list.get(left++));
-                leftFirst = false;
-            }
-            else {
-                reordered.add(list.get(right--));
-                leftFirst = true;
-            }
-        }
-        
-        if(left == right)
-            reordered.add(list.get(left));
-        
-        for(int i = 0; i < reordered.size() - 1; i++)
-            reordered.get(i).next = reordered.get(i + 1);
-        reordered.get(reordered.size() - 1).next = null;
-        
-        head = reordered.get(0);
-        
-    }
-    
-    /*
-    Runtime: 2 ms, faster than 57.57% of Java online submissions for Reorder List.
-    Memory Usage: 41.3 MB, less than 93.35% of Java online submissions for Reorder List.
-    */
-    public void reorderList2(ListNode head) {
+	public void reorderList(ListNode head) {
         if(head == null)
-            return;
-        if(head.next == null)
-            return;
-        
-        ListNode current = head;
-        List<ListNode> nodes = new ArrayList<>();
-        while(current != null){
-            nodes.add(current);
-            current = current.next;
-        }
-        
-        int start = 0, end = nodes.size() - 1;
-        ListNode h = head;
-        while(start < end){
-            h.next = nodes.get(start++);
-            h = h.next;
-            h.next = nodes.get(end--);
-            h = h.next;
-        }
-        if(start == end){
-            h.next = nodes.get(start);
-            h = h.next;
-        }
-        h.next = null;
-        head = nodes.get(0);
+			return;
+		ListNode current = head;
+		int count = 0;
+		while (current != null) {
+			count++;
+			current = current.next;
+		}
+		ListNode[] nodes = new ListNode[count];
+		
+		int index = 0;
+		current = head;
+		while(current != null) {
+			nodes[index++] = current;
+			current = current.next;
+		}
+		
+		ListNode[] ordered = new ListNode[nodes.length];
+		int left = 0, right = nodes.length - 1;
+		index = 0;
+		while (left < right) {
+			ordered[index++] = nodes[left++];
+			ordered[index++] = nodes[right--];
+		}
+		if(left == right) 
+			ordered[index] = nodes[left];
+		
+		for(int i = 0; i < ordered.length - 1; i++)
+			ordered[i].next = ordered[i + 1];
+		ordered[ordered.length - 1].next = null;
+		
+		head = ordered[0];
     }
+
 
 }
