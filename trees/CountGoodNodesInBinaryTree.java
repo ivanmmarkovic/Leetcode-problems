@@ -75,19 +75,22 @@ public class CountGoodNodesInBinaryTree {
 		return goodNodesHelper(root, null);
 	}
 
-	private int goodNodesHelper(TreeNode root, Integer max) {
-		if (root == null)
+	private int goodNodesHelper(TreeNode root, Integer currentMax) {
+		if(root == null)
 			return 0;
 		int count = 0;
-		if (max == null) {
+		// can't use Math.max(null, root.val)
+		if(currentMax == null) {
 			count++;
-			max = root.val;
-		} else if (max <= root.val) {
-			count++;
+			currentMax = root.val;
 		}
-
-		count += goodNodesHelper(root.left, Math.max(max, root.val));
-		count += goodNodesHelper(root.right, Math.max(max, root.val));
+		else if(root.val >= currentMax) {
+			count++;
+			currentMax = Math.max(root.val, currentMax);
+		}
+		
+		count += goodNodesHelper(root.left, currentMax);
+		count += goodNodesHelper(root.right, currentMax);
 		return count;
 	}
 
