@@ -1,7 +1,10 @@
 package trees;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 /*
 623. Add One Row to Tree
@@ -9,8 +12,8 @@ Medium
 
 https://leetcode.com/problems/add-one-row-to-tree/
 
-Runtime: 2 ms, faster than 23.62% of Java online submissions for Add One Row to Tree.
-Memory Usage: 45.7 MB, less than 7.98% of Java online submissions for Add One Row to Tree.
+Runtime: 2 ms, faster than 18.58% of Java online submissions for Add One Row to Tree.
+Memory Usage: 42.4 MB, less than 71.65% of Java online submissions for Add One Row to Tree.
 
 Given the root of a binary tree and two integers val and depth, add a row of nodes with value val at the given depth depth.
 
@@ -72,6 +75,57 @@ public class AddOneRowToTree {
 		}
 	}
 
+	
+	public TreeNode addOneRow(TreeNode root, int val, int depth) {
+		if(root == null)
+			return root;
+		Map<Integer, List<TreeNode>> levels = new HashMap<>();
+		traverse(root, levels, 1);
+		if (depth == 1) {
+			TreeNode r = new TreeNode(val, root, null);
+			return r;
+		}
+		else if (depth == levels.size() + 1) {
+			List<TreeNode> nodes = levels.get(levels.size());
+			for(TreeNode node: nodes) {
+				node.left = new TreeNode(val);
+				node.right = new TreeNode(val);
+			}
+			return root;
+		}
+		else {
+			List<TreeNode> nodes = levels.get(depth - 1);
+			for(TreeNode node: nodes) {
+				if(node.left != null)
+					node.left = new TreeNode(val, node.left, null);
+				else 
+					node.left = new TreeNode(val);
+				if(node.right != null)
+					node.right = new TreeNode(val, null, node.right);
+				else 
+					node.right = new TreeNode(val);
+			}
+			return root;
+		}
+		
+	}
+
+	private void traverse(TreeNode root, Map<Integer, List<TreeNode>> levels, int level) {
+		if(root == null)
+			return;
+		
+		traverse(root.left, levels, level + 1);
+		if(!levels.containsKey(level))
+			levels.put(level, new ArrayList<>());
+		levels.get(level).add(root);
+		traverse(root.right, levels, level + 1);
+		
+	}
+	/*
+	 
+	Runtime: 2 ms, faster than 23.62% of Java online submissions for Add One Row to Tree.
+	Memory Usage: 45.7 MB, less than 7.98% of Java online submissions for Add One Row to Tree. 
+	
 	public TreeNode addOneRow(TreeNode root, int val, int depth) {
 		if (root == null)
 			return null;
@@ -130,5 +184,6 @@ public class AddOneRowToTree {
 		}
 		return rows;
 	}
+	*/
 
 }
