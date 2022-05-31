@@ -70,31 +70,28 @@ class CopyListWithRandomPointer {
         if(head == null)
             return null;
         
-        Node originHead = head;
-        Node tmp;
-        while(originHead != null){
-            tmp = new Node(originHead.val);
-            tmp.next = originHead.next;
-            originHead.next = tmp;
-            originHead = originHead.next.next;
-        }
-        originHead = head;
-        while(originHead != null){
-            if(originHead.random == null)
-                originHead.next.random = null;
-            else 
-                originHead.next.random = originHead.random.next;
-            originHead = originHead.next.next;
-        }
-        
-        Node result = new Node(0);
-        tmp = result;
-        while(head != null){
-            tmp.next = head.next;
-            head.next = head.next.next;
-            head = head.next;
-            tmp = tmp.next;
-        }
-        return result.next;
+        Node current = head;
+    	while(current != null) {
+    		Node next = new Node(current.val);
+    		next.next = current.next;
+    		current.next = next;
+    		current = current.next.next;
+    	}
+    	current = head;
+    	while(current != null) {
+    		if(current.random != null)
+    			current.next.random = current.random.next;
+    		current = current.next.next;
+    	}
+    	current = head;
+    	Node result = new Node(0), r = result;
+    	while(current != null){
+    		r.next = current.next;
+    		current.next = current.next.next;
+    		
+    		r = r.next;
+    		current = current.next;
+    	}
+    	return result.next;
     }
 }
