@@ -44,7 +44,32 @@ class FlattenAMultilevelDoublyLinkedList {
 	        child = _child;
 	    }
 	}
+	/*
 	
+	public Node flatten(Node head) {
+		if(head == null)
+			return null;
+		List<Node> list = new ArrayList<>();
+		traverse(head, list);
+		for (int i = 0; i < list.size() - 1; i++) {
+			list.get(i).next = list.get(i + 1);
+			list.get(i + 1).prev = list.get(i);
+		}
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).child = null;
+		}
+		return list.get(0);
+	}
+
+	private void traverse(Node node, List<Node> list) {
+		if(node == null)
+			return;
+		list.add(node);
+		traverse(node.child, list);
+		traverse(node.next, list);
+		
+	}
+	*/
 	// the easiest solution
 	public Node flatten(Node head) {
         if(head == null)
