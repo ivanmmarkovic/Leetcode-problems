@@ -110,6 +110,35 @@ public class AddOneRowToTree {
 		
 	}
 
+	/* This solution works
+	public TreeNode addOneRow(TreeNode root, int val, int depth) {
+		if(root == null)
+			return null;
+		Map<Integer, List<TreeNode>> levels = new HashMap<>();
+		traverse(levels, root, 1);
+		if(depth == 1) {
+			TreeNode node = new TreeNode(val, root, null);
+			return node;
+		}
+		else if(depth > levels.size() + 1)
+			return root;
+		else {
+			List<TreeNode> nodes = levels.get(depth - 1);
+			for(TreeNode node: nodes) {
+				if(node.left != null) 
+					node.left = new TreeNode(val, node.left, null);
+				else
+					node.left = new TreeNode(val);
+				if(node.right != null)
+					node.right = new TreeNode(val, null, node.right);
+				else
+					node.right = new TreeNode(val);
+			}
+			return root;
+		}
+	}
+	*/
+	
 	private void traverse(TreeNode root, Map<Integer, List<TreeNode>> levels, int level) {
 		if(root == null)
 			return;
@@ -121,6 +150,9 @@ public class AddOneRowToTree {
 		traverse(root.right, levels, level + 1);
 		
 	}
+	
+	
+	
 	/*
 	 
 	Runtime: 2 ms, faster than 23.62% of Java online submissions for Add One Row to Tree.
