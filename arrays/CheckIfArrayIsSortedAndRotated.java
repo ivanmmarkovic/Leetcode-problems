@@ -56,6 +56,18 @@ Submissions
 public class CheckIfArrayIsSortedAndRotated {
 	
 	public boolean check(int[] nums) {
+        int count = 0;
+		for (int i = 0; i < nums.length - 1; i++) {
+			if(nums[i] > nums[i + 1])
+				count++;
+		}
+        if(count == 0) // [1, 2, 3]
+            return true;
+		return count <= 1 && nums[nums.length - 1] <= nums[0]; // [5, 1, 5]
+    }
+	
+	/*
+	public boolean check(int[] nums) {
         int check=0;
 
         for(int i=0;i<nums.length-1;i++){
@@ -68,5 +80,6 @@ public class CheckIfArrayIsSortedAndRotated {
 
         return !(check==1 && nums[0]<nums[nums.length-1]);
     }
+    */
 
 }
