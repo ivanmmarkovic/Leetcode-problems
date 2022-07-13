@@ -1,8 +1,12 @@
 package linkedlists;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+
+import linkedlists.Recap.Node;
 
 /*
 430. Flatten a Multilevel Doubly Linked List
@@ -44,6 +48,36 @@ class FlattenAMultilevelDoublyLinkedList {
 	        child = _child;
 	    }
 	}
+	
+	public Node flatten(Node head) {
+		if(head == null)
+			return null;
+		
+		List<Node> nodes = new ArrayList<>();
+		traverse(head, nodes);
+		int i;
+		for (i = 0; i < nodes.size() - 1; i++) {
+			if(i == 0) 
+				nodes.get(i).prev = null;
+			nodes.get(i).next = nodes.get(i + 1);
+			nodes.get(i + 1).prev = nodes.get(i);
+			nodes.get(i).child = null;
+		}
+		nodes.get(i).child = null;
+		nodes.get(i).next = null;
+		return nodes.get(0);
+    }
+
+
+
+	private void traverse(Node head, List<Node> nodes) {
+		if(head == null)
+			return;
+		nodes.add(head);
+		traverse(head.child, nodes);
+		traverse(head.next, nodes);
+	}
+	
 	/*
 	
 	public Node flatten(Node head) {
@@ -69,7 +103,8 @@ class FlattenAMultilevelDoublyLinkedList {
 		traverse(node.next, list);
 		
 	}
-	*/
+	
+	
 	// the easiest solution
 	public Node flatten(Node head) {
         if(head == null)
@@ -207,5 +242,5 @@ class FlattenAMultilevelDoublyLinkedList {
         flattenHelper4(head.next, q);
         head.prev = head.next = head.child = null;
     }
-    
+    */
 }
