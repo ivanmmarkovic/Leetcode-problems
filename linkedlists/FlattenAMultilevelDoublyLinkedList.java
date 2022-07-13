@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-import linkedlists.Recap.Node;
-
 /*
 430. Flatten a Multilevel Doubly Linked List
 Medium
