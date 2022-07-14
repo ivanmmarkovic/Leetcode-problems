@@ -57,4 +57,36 @@ class OddEvenLinkedList {
 		l.next = right.next;
 		return left.next;
 	}
+	
+	/*
+	Runtime: 0 ms, faster than 100.00% of Java online submissions for Odd Even Linked List.
+	Memory Usage: 44.8 MB, less than 44.10% of Java online submissions for Odd Even Linked List.
+	
+	public ListNode oddEvenList(ListNode head) {
+		if(head == null || head.next == null)
+            return head;
+        ListNode even = head, e = even;
+    	ListNode odd = head.next, o = odd;
+    	
+    	while(e != null && o != null) {
+    		e.next = e.next.next;
+    		o.next = o.next == null ? null : o.next.next;
+    		
+    		e = e.next;
+    		o = o.next;
+    	}
+    	
+    	if(e != null)
+    		e.next = odd;
+    	else {
+    		e = even;
+    		while(e.next != null) {
+    			e = e.next;
+    		}
+    		e.next = odd;
+    	}
+    	return head;
+    	
+    }
+	*/
 }
