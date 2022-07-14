@@ -1,3 +1,5 @@
+package linkedlists;
+
 /*
 92. Reverse Linked List II
 Medium
@@ -42,9 +44,57 @@ class ReverseLinkedListII {
 	    	this.next = next; 
 	    }
 	}
-
-    // this might be better/cleaner solution, same speed and memory
-    public ListNode reverseBetween2(ListNode head, int m, int n) {
+	
+	
+	public ListNode reverseBetween(ListNode head, int m, int n) {
+        int count = 1;
+		ListNode current = head, prev = null, first = null, last = null, after = null;
+		while(current != null) {
+			if(count == m - 1) {
+				prev = current;
+			}
+			if(count == m) {
+				first = current;
+			}
+			if(count == n) {
+				last = current;
+				after = last.next;
+				last.next = null;
+				ListNode reversed = reverseList(first);
+				if(prev == null)
+					head = reversed;
+				else 
+					prev.next = reversed;
+				
+				while(reversed.next != null) {
+					reversed = reversed.next;
+				}
+				reversed.next = after;
+				break;
+			}
+			count++;
+			current = current.next;
+		}
+		
+		return head;
+	}
+	
+	public ListNode reverseList(ListNode head) {
+		if(head == null)
+			return null;
+		else if(head.next == null)
+			return head;
+		else {
+			ListNode next = head.next;
+			head.next = null;
+			ListNode rest = reverseList(next);
+			next.next = head;
+			return rest;
+		}
+	}
+	
+	/*
+	public ListNode reverseBetween2(ListNode head, int m, int n) {
         
         int i = 1;
         ListNode prev = null, next = null;
@@ -79,7 +129,7 @@ class ReverseLinkedListII {
         
         return head;
     }
-
+	
     public ListNode reverseBetween(ListNode head, int m, int n) {
         if(head == null)
             return null;
@@ -92,7 +142,7 @@ class ReverseLinkedListII {
                 if(before == null)
                     before = head;
                 else
-                    before = tmp;
+                    before = tmp; // this is enough for this condition
             }
             if(i == m){
                 first = tmp;
@@ -116,43 +166,7 @@ class ReverseLinkedListII {
         before.next = after;
         return head;
     }
-	
-    public ListNode reverseBetween2(ListNode head, int m, int n) {
-        
-        int i = 1;
-        ListNode prev = null, next = null;
-        ListNode toReverse = new ListNode(0);
-        ListNode tmpToReverse = toReverse;
-        ListNode tmp = head;
-        while(i <= n){
-            if(i == m - 1)
-                prev = tmp;
-            if(i == n){
-                next = tmp.next;
-            }
-            if(i >= m && i <= n){
-                tmpToReverse.next = tmp;
-                tmpToReverse = tmpToReverse.next;
-            }
-            i++;
-            tmp = tmp.next;
-        }
-        toReverse = toReverse.next;
-        tmpToReverse.next = null;
-        if(prev == null){
-            head = reverseList(toReverse);
-            prev = head;
-        }
-        else
-            prev.next = reverseList(toReverse);
 
-        while(prev.next != null)
-            prev = prev.next;
-        prev.next = next;
-        
-        return head;
-    }
-	
     public ListNode reverseBetween3(ListNode head, int left, int right) {
 
         ListNode before = null, first = null, last = null, after = null, tmp = head;
@@ -182,17 +196,5 @@ class ReverseLinkedListII {
         }
         return head;
     }
-    public ListNode reverseList(ListNode head) {
-        if(head == null)
-            return null;
-        else if(head.next == null)
-            return head;
-        else {
-            ListNode next = head.next;
-            head.next = null;
-            ListNode rest = reverseList(next);
-            next.next = head;
-            return rest;
-        }
-    }
+    */
 }
