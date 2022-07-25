@@ -79,16 +79,14 @@ public class CountGoodNodesInBinaryTree {
 		if(root == null)
 			return 0;
 		int count = 0;
-		// can't use Math.max(null, root.val)
 		if(currentMax == null) {
 			count++;
 			currentMax = root.val;
 		}
 		else if(root.val >= currentMax) {
 			count++;
-			currentMax = Math.max(root.val, currentMax);
 		}
-		
+		currentMax = Math.max(root.val, currentMax);
 		count += goodNodesHelper(root.left, currentMax);
 		count += goodNodesHelper(root.right, currentMax);
 		return count;
