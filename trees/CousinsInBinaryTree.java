@@ -74,25 +74,23 @@ public class CousinsInBinaryTree {
 	}
 
 	public boolean isCousins(TreeNode root, int x, int y) {
+		
+		Map<Integer, Integer> prevs = new HashMap<>();
 		Map<Integer, Integer> levels = new HashMap<>();
-		Map<Integer, Integer> parents = new HashMap<>();
-
-		traverse(root, null, 0, levels, parents);
-		if(!levels.containsKey(x) || !levels.containsKey(y))
-			return false;
-
-		return levels.get(x) == levels.get(y) && parents.get(x) != parents.get(y);
+		
+		traverse(root, prevs, levels, null, 0);
+		
+		return prevs.get(x) != prevs.get(y) && levels.get(x) == levels.get(y); 
+		
 	}
 
-	private void traverse(TreeNode root, TreeNode parent, int level, Map<Integer, Integer> levels,
-			Map<Integer, Integer> parents) {
-		if (root == null)
+	private void traverse(TreeNode root, Map<Integer, Integer> prevs, Map<Integer, Integer> levels, TreeNode parent, int level) {
+		if(root == null)
 			return;
-		if (parent != null)
-			parents.put(root.val, parent.val);
 		levels.put(root.val, level);
-		traverse(root.left, root, level + 1, levels, parents);
-		traverse(root.right, root, level + 1, levels, parents);
+		prevs.put(root.val, parent == null ? null : parent.val);
+		traverse(root.left, prevs, levels, root, level + 1);
+		traverse(root.right, prevs, levels, root, level + 1);
 	}
 
 }
