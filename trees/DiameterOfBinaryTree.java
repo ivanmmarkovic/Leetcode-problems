@@ -61,21 +61,19 @@ public class DiameterOfBinaryTree {
 	
 	private static int diameter = 0; 
     public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null)
-            return 0;
-        diameter = 0;
-        int e = edges(root);
-        return diameter;
-    }
+    	helper(root);
+    	int r = diameter;
+    	diameter = 0;
+    	return r;
+	}
     
-    private int edges(TreeNode node){
-        if(node == null)
-            return 0;
-        int left = edges(node.left);
-        int right = edges(node.right);
-        if((left + right) > diameter)
-            diameter = left + right;
-        return Math.max(left, right) + 1;
-    }
+    private int helper(TreeNode root) {
+		if(root == null)
+			return 0;
+		int left = helper(root.left);
+		int right = helper(root.right);
+		diameter = Math.max(diameter, left + right);
+		return Math.max(left, right) + 1;
+	}
 
 }
