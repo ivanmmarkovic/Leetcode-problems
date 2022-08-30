@@ -86,6 +86,8 @@ public class ReorderList {
 
     /*
 	// slower
+	// Runtime: 11 ms, faster than 9.66% of Java online submissions for Reorder List.
+        // Memory Usage: 54.4 MB, less than 29.29% of Java online submissions for Reorder List.
 	public void reorderList(ListNode head) {
 		if(head == null)
 			return;
