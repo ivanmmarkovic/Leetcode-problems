@@ -84,5 +84,34 @@ public class ReorderList {
 		head = ordered[0];
     }
 
+    /*
+	// slower
+	public void reorderList(ListNode head) {
+		if(head == null)
+			return;
+		
+		ListNode current = head;
+		List<ListNode> nodes = new ArrayList<>();
+		while(current != null) {
+			nodes.add(current);
+			current = current.next;
+		}
+		
+		int left = 0, right = nodes.size() - 1;
+		List<ListNode> reordered = new ArrayList<>();
+		while(left < right) {
+			reordered.add(nodes.get(left++));
+			reordered.add(nodes.get(right--));
+		}
+		if(left == right)
+			reordered.add(nodes.get(left));
+		
+		for (int i = 0; i < reordered.size() - 1; i++) {
+			reordered.get(i).next = reordered.get(i + 1);
+		}
+		reordered.get(reordered.size() - 1).next = null;
+		head = reordered.get(0);
+	}
+	*/
 
 }
