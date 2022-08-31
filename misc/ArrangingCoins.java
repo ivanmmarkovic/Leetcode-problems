@@ -51,4 +51,19 @@ public class ArrangingCoins {
 		}
 		return rows;
 	}
+	
+	/*
+	public int arrangeCoins(int n) {
+		
+		int rows = 0;
+		int length = 1;
+		while(n > 0) {
+			if(n - length >= 0)
+				rows++;
+			n -= length;
+			length++;
+		}
+		return rows;
+	}
+	*/
 }
