@@ -78,15 +78,19 @@ public class AddOneRowToTree {
 	
 	public TreeNode addOneRow(TreeNode root, int val, int depth) {
 		if(root == null)
-			return root;
+			return null;
 		Map<Integer, List<TreeNode>> levels = new HashMap<>();
 		traverse(root, levels, 1);
-		if (depth == 1) {
-			TreeNode r = new TreeNode(val, root, null);
-			return r;
+		if(depth > levels.size() + 1)
+			return root;
+		int key = depth - 1;
+		if(key == 0) {
+			TreeNode node = new TreeNode(val);
+			node.left = root;
+			return node;
 		}
-		else if (depth == levels.size() + 1) {
-			List<TreeNode> nodes = levels.get(levels.size());
+		else if(key == levels.size()) {
+			List<TreeNode> nodes = levels.get(key);
 			for(TreeNode node: nodes) {
 				node.left = new TreeNode(val);
 				node.right = new TreeNode(val);
@@ -94,128 +98,33 @@ public class AddOneRowToTree {
 			return root;
 		}
 		else {
-			List<TreeNode> nodes = levels.get(depth - 1);
+			List<TreeNode> nodes = levels.get(key);
 			for(TreeNode node: nodes) {
-				if(node.left != null)
-					node.left = new TreeNode(val, node.left, null);
-				else 
+				if(node.left == null)
 					node.left = new TreeNode(val);
-				if(node.right != null)
-					node.right = new TreeNode(val, null, node.right);
-				else 
+				else {
+					node.left = new TreeNode(val, node.left, null);
+				}
+				if(node.right == null) {
 					node.right = new TreeNode(val);
+				}
+				else {
+					node.right = new TreeNode(val, null, node.right);
+				}
 			}
 			return root;
 		}
-		
 	}
 
-	/* This solution works
-	public TreeNode addOneRow(TreeNode root, int val, int depth) {
-		if(root == null)
-			return null;
-		Map<Integer, List<TreeNode>> levels = new HashMap<>();
-		traverse(levels, root, 1);
-		if(depth == 1) {
-			TreeNode node = new TreeNode(val, root, null);
-			return node;
-		}
-		else if(depth > levels.size() + 1)
-			return root;
-		else {
-			List<TreeNode> nodes = levels.get(depth - 1);
-			for(TreeNode node: nodes) {
-				if(node.left != null) 
-					node.left = new TreeNode(val, node.left, null);
-				else
-					node.left = new TreeNode(val);
-				if(node.right != null)
-					node.right = new TreeNode(val, null, node.right);
-				else
-					node.right = new TreeNode(val);
-			}
-			return root;
-		}
-	}
-	*/
-	
 	private void traverse(TreeNode root, Map<Integer, List<TreeNode>> levels, int level) {
+		
 		if(root == null)
 			return;
-		
-		traverse(root.left, levels, level + 1);
 		if(!levels.containsKey(level))
 			levels.put(level, new ArrayList<>());
+		traverse(root.left, levels, level + 1);
 		levels.get(level).add(root);
 		traverse(root.right, levels, level + 1);
 		
 	}
-	
-	
-	
-	/*
-	 
-	Runtime: 2 ms, faster than 23.62% of Java online submissions for Add One Row to Tree.
-	Memory Usage: 45.7 MB, less than 7.98% of Java online submissions for Add One Row to Tree. 
-	
-	public TreeNode addOneRow(TreeNode root, int val, int depth) {
-		if (root == null)
-			return null;
-		List<List<TreeNode>> rows = traverse(root);
-		if (depth > rows.size() + 1)
-			return root;
-		List<TreeNode> current;
-		if (depth == rows.size() + 1) {
-			current = rows.get(rows.size() - 1);
-			for (TreeNode node : current) {
-				node.left = new TreeNode(val, null, null);
-				node.right = new TreeNode(val, null, null);
-			}
-		} else if (depth == 1) {
-			TreeNode node = new TreeNode(val, root, null);
-			return node;
-		} else {
-			current = rows.get(depth - 1);
-			if (current == null)
-				return root;
-			for (TreeNode node : current) {
-				if (node.left != null) {
-					node.left = new TreeNode(val, node.left, null);
-				} else
-					node.left = new TreeNode(val, null, null);
-				if (node.right != null) {
-					node.right = new TreeNode(val, null, node.right);
-				} else
-					node.right = new TreeNode(val, null, null);
-			}
-		}
-
-		return root;
-
-	}
-
-	private List<List<TreeNode>> traverse(TreeNode root) {
-		List<List<TreeNode>> rows = new ArrayList<>();
-		rows.add(null);
-		List<TreeNode> current = new ArrayList<>();
-		current.add(root);
-		rows.add(current);
-		while (true) {
-			current = new ArrayList<>();
-			List<TreeNode> prev = rows.get(rows.size() - 1);
-			for (TreeNode node : prev) {
-				if (node.left != null)
-					current.add(node.left);
-				if (node.right != null)
-					current.add(node.right);
-			}
-			if (current.size() == 0)
-				break;
-			rows.add(current);
-
-		}
-		return rows;
-	}
-	*/
-
 }
