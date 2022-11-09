@@ -56,6 +56,32 @@ Submissions
 
 */
 public class ConsecutiveCharacters {
+	
+	public int maxPower(String s) {
+		if(s == null || s.length() == 0)
+			return 0;
+		
+		int power = 1; 
+		int connected = 1;
+		char c = s.charAt(0);
+		int index = 1;
+		while(index < s.length()) {
+			if(s.charAt(index) == c) {
+				connected++;
+				power = Math.max(power, connected);
+			}
+			else {
+				power = Math.max(power, connected);
+				c = s.charAt(index);
+				connected = 1;
+			}
+			index++;
+		}
+		
+		return power;
+	}
+	
+	/*
 
 	public int maxPower(String s) {
 
@@ -85,4 +111,6 @@ public class ConsecutiveCharacters {
 		}
 		return power;
 	}
+	
+	*/
 }
