@@ -39,6 +39,24 @@ Submissions
 
 
 class FirstMissingPositive {
+	
+	/*
+	public int firstMissingPositive(int[] nums) {
+        Set<Integer> positive = new HashSet<>();
+		for(int n: nums) {
+			positive.add(n);
+		}
+		
+		int n = 1;
+		for(Integer p: positive) {
+			if(!positive.contains(n)) {
+				return n;
+			}
+			n++;
+		}
+		return n;
+    }
+	*/
     
     public int firstMissingPositive(int[] nums) {
 		Set<Integer> vals = new HashSet<>();
