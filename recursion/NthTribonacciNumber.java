@@ -46,6 +46,20 @@ Submissions
 */
 public class NthTribonacciNumber {
 	
+    private static HashMap<Integer, Integer> nums = new HashMap<>();
+    public int tribonacci(int n) {
+    	if(n == 0) return 0;
+    	if(n == 1) return 1;
+    	if(n == 2) return 1;
+    	
+    	if(!nums.containsKey(n)) 
+    		nums.put(n, tribonacci(n - 1) + tribonacci(n - 2) + tribonacci(n - 3));
+    	
+    	return nums.get(n);
+    	
+    }
+	
+	/*
 	HashMap<Integer, Integer> nums = new HashMap<>();
     public int tribonacci(int n) {
         nums.put(0, 0);
@@ -64,5 +78,7 @@ public class NthTribonacciNumber {
             return nums.get(n);
         }
     }
+	*/
+    
 
 }
