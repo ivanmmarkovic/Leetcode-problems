@@ -1,5 +1,5 @@
-
 import java.util.HashMap;
+import java.util.Map;
 
 /*
 70. Climbing Stairs
@@ -47,7 +47,20 @@ Submissions
 */
 public class ClimbingStairs {
 	
-	HashMap<Integer, Integer> counts = new HashMap<>();
+    private static Map<Integer, Integer> count = new HashMap<>();
+	
+	public int climbStairs(int n) {
+		if(n == 1) return 1;
+		if(n == 2) return 2;
+		
+		if(!count.containsKey(n)) 
+			count.put(n, climbStairs(n - 1) + climbStairs(n - 2));
+
+		return count.get(n);
+	}
+	
+    /*
+    HashMap<Integer, Integer> counts = new HashMap<>();
    
     
     public int climbStairs(int n) {
@@ -66,5 +79,6 @@ public class ClimbingStairs {
             return counts.get(n);
         }
     }
+    */
 
 }
