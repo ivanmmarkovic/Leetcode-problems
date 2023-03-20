@@ -40,6 +40,27 @@ Submissions
 */
 class SearchInsertPosition {
     public int searchInsert(int[] nums, int target) {
+        	
+		int i;
+		for (i = 0; i < nums.length; i++) {
+			if(nums[i] == target)
+				return i;
+			if(nums[i] > target)
+				return i;
+		}
+		return i;
+    		
+    	
+    	/*
+    	
+    	this solution works
+    	
+    	int i;
+        for (i = 0; i < nums.length && nums[i] < target ; i++);
+        return i;
+        */
+    	
+    	/*
         int position = -1;
         boolean found = false;
         int i;
@@ -52,5 +73,6 @@ class SearchInsertPosition {
         if(found)
             return position;
         return i;
+        */
     }
 }
