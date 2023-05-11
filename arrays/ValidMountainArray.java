@@ -7,8 +7,8 @@ Easy
 
 https://leetcode.com/problems/valid-mountain-array/
 
-Runtime: 8 ms, faster than 6.87% of Java online submissions for Valid Mountain Array.
-Memory Usage: 51.4 MB, less than 35.10% of Java online submissions for Valid Mountain Array.
+Runtime: 1 ms, faster than 100% of Java online submissions for Valid Mountain Array.
+Memory Usage: 43.4 MB, less than 72.68% of Java online submissions for Valid Mountain Array.
 
 Given an array of integers arr, return true if and only if it is a valid mountain array.
 
@@ -52,39 +52,37 @@ Submissions
 public class ValidMountainArray {
 	
 	public boolean validMountainArray(int[] arr) {
-        if(arr == null)
+		if(arr == null)
             return false;
         if(arr.length < 3)
             return false;
-        
-        int index = findMax(arr);
-        if(index == 0 || index == arr.length - 1)
-            return false;
-        
-        for(int i = 0; i < index; i++){
-            if(arr[i] >= arr[i + 1])
-                return false;
-        }
-        
-        for(int i = index; i < arr.length - 1; i++){
-            if(arr[i] <= arr[i + 1])
-                return false;
-        }
-        
-        return true;
-        
-    }
-    
-    private int findMax(int[] arr){
-        Integer max = Integer.MIN_VALUE;
+
         int index = -1;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] > max){
-                max = arr[i];
-                index = i;
-            }
-        }
-        return index;
+		int val = Integer.MIN_VALUE;
+
+		
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i] > val) {
+				index = i;
+				val = arr[i];
+			}
+		}
+		
+		if(index == arr.length - 1 || index == 0)
+		return false;
+
+		
+		for(int i = 0; i < index; i++) {
+			if(arr[i] >= arr[i + 1])
+				return false;
+		}
+		
+		for(int i = index; i < arr.length - 1; i++) {
+			if(arr[i] <= arr[i + 1])
+				return false;
+		}
+		
+		return true;
     }
 
 }
