@@ -77,54 +77,32 @@ public class AddOneRowToTree {
 
 	
 	public TreeNode addOneRow(TreeNode root, int val, int depth) {
-		if(root == null)
-			return null;
+		
 		Map<Integer, List<TreeNode>> levels = new HashMap<>();
-		traverse(root, levels, 1);
-		if(depth > levels.size() + 1)
-			return root;
-		int key = depth - 1;
-		if(key == 0) {
-			TreeNode node = new TreeNode(val);
-			node.left = root;
-			return node;
+		traverse(levels, root, 1);
+		if(depth == 1) {
+			TreeNode node = new TreeNode(val, root, null);
+			root = node;
 		}
-		else if(key == levels.size()) {
-			List<TreeNode> nodes = levels.get(key);
+		else if(depth > 1 && depth <= levels.size() + 1) {
+			List<TreeNode> nodes = levels.get(depth - 1);
 			for(TreeNode node: nodes) {
-				node.left = new TreeNode(val);
-				node.right = new TreeNode(val);
+				node.left = new TreeNode(val, node.left, null);
+				node.right = new TreeNode(val, null, node.right);
 			}
-			return root;
 		}
-		else {
-			List<TreeNode> nodes = levels.get(key);
-			for(TreeNode node: nodes) {
-				if(node.left == null)
-					node.left = new TreeNode(val);
-				else {
-					node.left = new TreeNode(val, node.left, null);
-				}
-				if(node.right == null) {
-					node.right = new TreeNode(val);
-				}
-				else {
-					node.right = new TreeNode(val, null, node.right);
-				}
-			}
-			return root;
-		}
+		
+		return root;
 	}
 
-	private void traverse(TreeNode root, Map<Integer, List<TreeNode>> levels, int level) {
-		
+	private void traverse(Map<Integer, List<TreeNode>> levels, TreeNode root, int level) {
 		if(root == null)
 			return;
+		traverse(levels, root.left, level + 1);
 		if(!levels.containsKey(level))
 			levels.put(level, new ArrayList<>());
-		traverse(root.left, levels, level + 1);
 		levels.get(level).add(root);
-		traverse(root.right, levels, level + 1);
+		traverse(levels, root.right, level + 1);
 		
 	}
 }
