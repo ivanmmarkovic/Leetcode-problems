@@ -63,6 +63,34 @@ public class IncreasingOrderSearchTree {
 	}
 	
 	public TreeNode increasingBST(TreeNode root) {
+		if(root == null)
+			return null;
+		
+		List<TreeNode> nodes = new ArrayList<>();
+		inorder(root, nodes);
+		int i;
+		for (i = 0; i < nodes.size() - 1; i++) {
+			nodes.get(i).left = null;
+			nodes.get(i).right = nodes.get(i + 1);
+		}
+		
+		nodes.get(i).left = null;
+        nodes.get(i).right = null;
+		return nodes.get(0);
+	}
+
+	private void inorder(TreeNode root, List<TreeNode> nodes) {
+		// TODO Auto-generated method stub
+		if(root == null)
+			return;
+		inorder(root.left, nodes);
+		nodes.add(root);
+		inorder(root.right, nodes);
+		
+	}
+	
+	/*
+	public TreeNode increasingBST(TreeNode root) {
         List<Integer> vals = new ArrayList<>();
         inorder(root, vals);
         TreeNode tmp = new TreeNode(0), t = tmp;
@@ -80,27 +108,5 @@ public class IncreasingOrderSearchTree {
         vals.add(root.val);
         inorder(root.right, vals);
     }
-	
-	/*
-	public TreeNode increasingBST(TreeNode root) {
-        List<TreeNode> vals = new ArrayList<>();
-        inorder(root, vals);
-        for(int i = 0; i < vals.size() - 1; i++){
-            vals.get(i).left = null;
-            vals.get(i).right = vals.get(i + 1);
-        }
-        vals.get(vals.size() - 1).left= null;
-        vals.get(vals.size() - 1).right = null;
-        return vals.get(0);
-        
-    }
-    private void inorder(TreeNode root, List<TreeNode> vals){
-        if(root == null)
-            return;
-        inorder(root.left, vals);
-        vals.add(root);
-        inorder(root.right, vals);
-    }
-	*/
-
+    */
 }
