@@ -1,7 +1,17 @@
+package trees;
 
 /*
 https://leetcode.com/problems/path-sum/ 
 easy
+
+Runtime0 ms
+Beats
+100%
+
+Memory43.5 MB
+Beats
+29.20%
+
 
 Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
 
@@ -31,23 +41,22 @@ public class PathSum {
 		TreeNode(int x) { val = x; }
 	}
 	
-	public boolean pathFound(TreeNode root,int sum) {
-		return pathSumHelper(root, 0, sum);
+public boolean pathFound(TreeNode root,int sum) {
+		
+		return pathFoundHelper(root, sum, 0);
+		
 	}
-	
-	public boolean pathSumHelper(TreeNode root, int currentSum, int targetSum) {
+
+	private boolean pathFoundHelper(TreeNode root, int sum, int current) {
 		if(root == null)
 			return false;
+		current += root.val;
 		if(root.left == null && root.right == null) {
-			if(root.val + currentSum == targetSum)
+			if(current == sum)
 				return true;
-			else
-				return false;
+			return false;
 		}
-		boolean exists = pathSumHelper(root.left, currentSum + root.val, targetSum);
-		if(!exists)
-			exists = pathSumHelper(root.right, currentSum + root.val, targetSum);
-		return exists;
+		return pathFoundHelper(root.left, sum, current) || pathFoundHelper(root.right, sum, current);
 	}
 
 }
