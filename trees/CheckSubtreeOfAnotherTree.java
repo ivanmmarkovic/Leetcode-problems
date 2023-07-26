@@ -61,26 +61,28 @@ public class CheckSubtreeOfAnotherTree {
 		TreeNode left, right;
 	}
 	
-	public boolean isSubtree(TreeNode s, TreeNode t) {
-        if(s == null)
+	public boolean isSubtree(TreeNode root, TreeNode subtree) {
+		if(root == null && subtree == null)
+            return true;
+        if(root == null || subtree == null)
             return false;
-        boolean matches = isSame(s, t);
+
+        boolean matches = helper(root, subtree);
         if(!matches)
-            matches = isSubtree(s.left, t);
-        if(!matches)
-            matches = isSubtree(s.right, t);
+            matches = isSubtree(root.left, subtree) || isSubtree(root.right, subtree);
         return matches;
-    }
-    
-    public boolean isSame(TreeNode root, TreeNode subtree) {
+        
+	}
+
+    public boolean helper(TreeNode root, TreeNode subtree) {
         if(root == null && subtree == null)
             return true;
         if(root == null || subtree == null)
             return false;
-        if(root.value != subtree.value)
+        if(root.val != subtree.val)
             return false;
-        else
-            return isSame(root.left, subtree.left) && isSame(root.right, subtree.right);
+        return helper(root.left, subtree.left) && helper(root.right, subtree.right);
+    }
     		
     }
 
