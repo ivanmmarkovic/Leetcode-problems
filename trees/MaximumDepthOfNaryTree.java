@@ -5,8 +5,10 @@ import java.util.List;
 559. Maximum Depth of N-ary Tree
 Easy
 
-Runtime: 1 ms, faster than 38.10% of Java online submissions for Maximum Depth of N-ary Tree.
-Memory Usage: 41.5 MB, less than 100.00% of Java online submissions for Maximum Depth of N-ary Tree.
+https://leetcode.com/problems/maximum-depth-of-n-ary-tree
+
+Runtime -ms Beats 100.00%of users with Java
+Memory 43.22mb Beats 41.94%of users with Java
 
 Given a n-ary tree, find its maximum depth.
 
@@ -61,13 +63,10 @@ class MaximumDepthOfNaryTree {
     public int maxDepth(Node root) {
         if(root == null)
             return 0;
-        int maxSubtreeHeight = 0;
-        int tmp;
+        int depth = 0;
         for(Node child: root.children){
-            tmp = maxDepth(child);
-            if(tmp > maxSubtreeHeight)
-                maxSubtreeHeight = tmp;
+            depth = Math.max(depth, maxDepth(child));
         }
-        return 1 + maxSubtreeHeight;
+        return depth + 1;
     }
 }
