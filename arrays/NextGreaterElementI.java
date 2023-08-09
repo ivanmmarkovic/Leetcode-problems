@@ -55,10 +55,53 @@ Submissions
 */
 public class NextGreaterElementI {
 	
+	/* 
+	Runtime Details
+	3ms
+	Beats 91.65%of users with Java
+	Memory
+	Details
+	41.82mb
+	Beats 99.52%of users with Java
+	 */
+	public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+		int elements[] = new int[nums1.length];
+		for (int i = 0; i < nums1.length; i++) {
+			int e = nums1[i];
+
+			int j = 0;
+			while(j < nums2.length) {
+				if(nums2[j] == e) 
+					break;
+				else
+					j++;
+				
+			}
+			if(j == nums2.length) {
+				elements[i] = -1;
+				continue;
+			}
+			
+			j++;
+			while(j < nums2.length) {
+				if(nums2[j] > e)
+					break;
+				else
+					j++;
+			}
+			if(j == nums2.length)
+				elements[i] = -1;
+			else
+				elements[i] = nums2[j];
+				
+		}
+		return elements;
+	}
+	
 	/*
 	Runtime: 4 ms, faster than 80.52% of Java online submissions for Next Greater Element I.
 	Memory Usage: 43.6 MB, less than 76.78% of Java online submissions for Next Greater Element I.
-	*/
+	
 	public int[] nextGreaterElement(int[] nums1, int[] nums2) {
 
 		int elements[] = new int[nums1.length];
@@ -95,7 +138,8 @@ public class NextGreaterElementI {
 		return elements;
 
 	}
-	/*
+	
+	
 	public int[] nextGreaterElement(int[] nums1, int[] nums2) {
 
 		int res[] = new int[nums1.length];
