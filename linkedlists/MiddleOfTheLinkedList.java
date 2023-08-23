@@ -4,6 +4,8 @@
 876. Middle of the Linked List
 Easy
 
+https://leetcode.com/problems/middle-of-the-linked-list/
+
 Runtime: 0 ms, faster than 100.00% of Java online submissions for Middle of the Linked List.
 Memory Usage: 36.5 MB, less than 7.84% of Java online submissions for Middle of the Linked List.
 
