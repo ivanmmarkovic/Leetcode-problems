@@ -64,6 +64,34 @@ Submissions
 */
 public class SlowestKey {
 
+	// Beats 94.40%of users with Java
+	// Beats 49.07%of users with Java
+	public char slowestKey(int[] releaseTimes, String keysPressed) {
+		Character c = null;
+		int speed = Integer.MIN_VALUE;
+		
+		for (int i = 0; i < releaseTimes.length; i++) {
+			char currentCharacter = keysPressed.charAt(i);
+			int currentSpeed;
+			if(i == 0)
+				currentSpeed = releaseTimes[i];
+			else {
+				currentSpeed = releaseTimes[i] - releaseTimes[i - 1];
+			}
+			
+			if(c == null || speed < currentSpeed) {
+				c = currentCharacter;
+				speed = currentSpeed;
+			}
+			else if(speed == currentSpeed)
+				if(currentCharacter > c)
+					c = currentCharacter;
+		}
+		
+		return c;
+	}
+	
+	/*
 	public char slowestKey(int[] releaseTimes, String keysPressed) {
 
 		Integer time = Integer.MIN_VALUE;
@@ -87,4 +115,5 @@ public class SlowestKey {
 		return keysPressed.charAt(index);
 
 	}
+	*/
 }
