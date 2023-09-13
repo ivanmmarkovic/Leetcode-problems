@@ -62,10 +62,8 @@ public class SubtreeOfAnotherTree {
 	public boolean isSubtree(TreeNode root, TreeNode subtree) {
 		if(root == null && subtree == null)
 			return true;
-        if(root == null)
+        if(root == null || subRoot == null)
             return false;
-        if(subtree == null)
-            return true;
 		boolean matches = helper(root, subtree);
 		if(!matches)
 			matches = isSubtree(root.right, subtree) || isSubtree(root.left, subtree);
