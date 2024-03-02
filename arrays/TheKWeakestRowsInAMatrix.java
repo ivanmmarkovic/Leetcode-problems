@@ -74,6 +74,63 @@ Submissions
 
 */
 public class TheKWeakestRowsInAMatrix {
+
+	/*
+	Runtime 2ms Beats82.02%of users with Java
+	Memory 44.40MB Beats86.47%of users with Java
+	
+    class Row {
+	int index;
+	int strength;
+
+	Row(int index, int strength){
+	    this.index = index;
+	    this.strength = strength;
+	}
+    }
+
+    public int[] kWeakestRows(int[][] mat, int k) {
+	Row rows[] = new Row[mat.length];
+	int index = 0;
+	for(int i = 0; i < mat.length; i++){
+	    Row r = returnRow(mat[i], i);
+	    rows[index++] = r;
+	}
+	sort(rows);
+
+	int result[] = new int[k];
+	index = 0;
+	for(int i = 0; i < k; i++){
+	    result[index++] = rows[i].index;
+	}
+	return result;
+    }
+
+    private Row returnRow(int vals[], int index){
+	int countOnes = 0;
+	for(int v: vals){
+	    if(v == 1){
+		countOnes++;
+	    }
+	    else {
+		break;
+	    }
+	}
+	return new Row(index, countOnes);
+    }
+
+    private void sort(Row rows[]){
+	for(int i = 0; i < rows.length; i++){
+	    for(int j = rows.length - 1; j > i; j--){
+		if(rows[j - 1].strength > rows[j].strength){
+		    Row tmp = rows[j - 1];
+		    rows[j - 1] = rows[j];
+		    rows[j] = tmp;
+		}
+	    }
+	}
+    }
+	*/
 	
 	public int[] kWeakestRows(int[][] mat, int k) {
         
