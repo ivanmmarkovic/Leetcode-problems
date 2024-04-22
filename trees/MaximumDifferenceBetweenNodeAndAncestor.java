@@ -67,6 +67,20 @@ public class MaximumDifferenceBetweenNodeAndAncestor {
 	}
 	
 	public int maxAncestorDiff(TreeNode root) {
+		return maxHelper(root, root.val, root.val);
+	}
+
+	public int maxHelper(TreeNode root, int min, int max){
+		if(root == null)
+			return 0;
+		int vLeft = maxHelper(root.left, Math.min(min, root.val), Math.max(max, root.val));
+		int vRight = maxHelper(root.right, Math.min(min, root.val), Math.max(max, root.val));
+		int current = Math.max(Math.abs(root.val - min), Math.abs(root.val - max));
+		return Math.max(current, Math.max(vLeft, vRight));
+	}
+	
+	/*
+	public int maxAncestorDiff(TreeNode root) {
 		int min = minAncestorDiffHelper(root, root.val);
 		int max = maxAncestorDiffHelper(root, root.val);
 		return Math.max(min, max);
@@ -75,7 +89,7 @@ public class MaximumDifferenceBetweenNodeAndAncestor {
 	public int maxAncestorDiffHelper(TreeNode root, int currentMaxValue) {
 		if (root == null)
 			return Integer.MIN_VALUE;
-		int currentMaxDiff = currentMaxValue - root.val;
+		int currentMaxDiff = Math.abs(currentMaxValue - root.val);
 
 		int left = maxAncestorDiffHelper(root.left, Math.max(currentMaxValue, root.val));
 		int right = maxAncestorDiffHelper(root.right, Math.max(currentMaxValue, root.val));
@@ -93,35 +107,45 @@ public class MaximumDifferenceBetweenNodeAndAncestor {
 
 		return Math.max(currentMaxDiff, Math.max(left, right));
 	}
+	*/
+
 
 	/*
-	public int maxAncestorDiff(TreeNode root) {
-        int min = minAncestorDiffHelper(root, root.val, Integer.MIN_VALUE);
-        int max = maxAncestorDiffHelper(root, root.val, Integer.MIN_VALUE);
-        return Math.max(min, max);
-    }
+	private static int maxDiff = Integer.MIN_VALUE;
+    public int maxAncestorDiff(TreeNode root) {
+        trackMaxValue(root, null);
+		trackMinValue(root, null);
+		int v = maxDiff;
+		maxDiff = Integer.MIN_VALUE;
+		return v;
+	}
 
-
-    public int maxAncestorDiffHelper(TreeNode root, int currentMaxValue, int currentMaxDiff) {
-        if(root == null)
-            return currentMaxDiff;
-        currentMaxDiff = Math.max((currentMaxValue - root.val), currentMaxDiff);
-
-        int left = maxAncestorDiffHelper(root.left, Math.max(currentMaxValue, root.val), currentMaxDiff);
-        int right = maxAncestorDiffHelper(root.right, Math.max(currentMaxValue, root.val), currentMaxDiff);
-
-        return Math.max(currentMaxDiff, Math.max(left, right));
-    }
-
-    public int minAncestorDiffHelper(TreeNode root, int currentMinValue, int currentMaxDiff) {
-        if(root == null)
-            return currentMaxDiff;
-        currentMaxDiff = Math.max(Math.abs(currentMinValue - root.val), currentMaxDiff);
-
-        int left = minAncestorDiffHelper(root.left, Math.min(currentMinValue, root.val), currentMaxDiff);
-        int right = minAncestorDiffHelper(root.right, Math.min(currentMinValue, root.val), currentMaxDiff);
-
-        return Math.max(currentMaxDiff, Math.max(left, right));
+	private void trackMaxValue(TreeNode root, Integer max) {
+		if(root == null)
+			return;
+		if(max == null)
+			max = root.val;
+		else {
+			int currentDiff = Math.abs(max - root.val);
+			maxDiff = Math.max(currentDiff, maxDiff);
+			max = Math.max(max, root.val);
+		}
+		trackMaxValue(root.left, max);
+		trackMaxValue(root.right, max);
+	}
+	
+	private void trackMinValue(TreeNode root, Integer min) {
+		if(root == null)
+			return;
+		if(min == null)
+			min = root.val;
+		else {
+			int currentDiff = Math.abs(min - root.val);
+			maxDiff = Math.max(currentDiff, maxDiff);
+			min = Math.min(min, root.val);
+		}
+		trackMinValue(root.left, min);
+		trackMinValue(root.right, min);
     }
 	*/
 }
