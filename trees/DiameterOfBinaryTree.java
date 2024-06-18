@@ -75,5 +75,32 @@ public class DiameterOfBinaryTree {
 		diameter = Math.max(diameter, left + right);
 		return Math.max(left, right) + 1;
 	}
+    /*
+	public int diameterOfBinaryTree(TreeNode root) {
+        int[] diameter = getDiameter(root);
+		return diameter[0];
+	}
+	
+	private int[] getDiameter(TreeNode root){
+		if(root == null){
+			int[] diameterHeight = {Integer.MIN_VALUE, 0};
+			return diameterHeight;
+		}
+		int[] leftArray = getDiameter(root.left);
+		int leftDiameter = leftArray[0];
+		int leftHeight = leftArray[1];
+		int[] rightArray = getDiameter(root.right);
+		int rightDiameter = rightArray[0];
+		int rightHeight = rightArray[1];
+		
+		int currentDiameter = leftHeight + rightHeight;
+		int d = Math.max(leftDiameter, rightDiameter);
+		d = Math.max(currentDiameter, d);
+		
+		int[] array = {d, Math.max(leftHeight, rightHeight) + 1};
+		return array;
+    }
+
+	*/
 
 }
