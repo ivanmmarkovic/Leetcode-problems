@@ -96,4 +96,37 @@ class PopulatingNextRightPointersInEachNode {
         helper(root.left, level + 1, levels);
         helper(root.right, level + 1, levels);
     }
+
+    /*
+	public Node connect(Node root) {
+		if(root == null)
+			return null;
+		List<List<Node>> levels = new ArrayList<>();
+		List<Node> current = new ArrayList<>();
+		current.add(root);
+		levels.add(current);
+		List<Node> prev = null;
+
+		while(true){
+			prev = levels.get(levels.size() - 1);
+			current = new ArrayList<>();
+			for(Node n: prev){
+				if(n.left != null)
+					current.add(n.left);
+				if(n.right != null)
+					current.add(n.right);
+
+			}
+			for(int i = 0; i < current.size() - 1; i++){
+				current.get(i).right = current.get(i + 1);
+			}
+			if(current.size() > 1)
+				levels.add(current);
+			else
+				break;;
+		}
+		return levels.get(0).get(0);
+		
+	*/
+
 }
