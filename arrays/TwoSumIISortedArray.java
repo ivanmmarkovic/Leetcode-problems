@@ -31,7 +31,7 @@ Submissions
 */
 class TwoSumIISortedArray {
     public int[] twoSum(int[] numbers, int target) {
-        
+        /*
         int result[] = new int[2];
         for(int i = 0; i < numbers.length - 1; i++){
             
@@ -48,5 +48,26 @@ class TwoSumIISortedArray {
             
         }
         return result;
+        */
+
+        // 2ms Beats89.76%
+        int left = 0, right = numbers.length - 1;
+        int l = -1, r = -1;
+        while(left < right){
+            int one = numbers[left];
+            int two = numbers[right];
+            if(one + two == target){
+                l = left + 1; 
+                r = right + 1;
+                break;
+            }
+            else if(one + two > target)
+                right--;
+            else
+                left++;
+        }
+
+        int[] coords = {l, r};
+        return coords;
     }
 }
