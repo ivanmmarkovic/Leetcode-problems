@@ -2,9 +2,7 @@ package arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /*
 15. 3Sum
@@ -12,9 +10,8 @@ Medium
 
 https://leetcode.com/problems/3sum/
 
-Runtime: 1187 ms, faster than 7.17% of Java online submissions for 3Sum.
-Memory Usage: 45.2 MB, less than 7.10% of Java online submissions for 3Sum.
-
+Runtime 32ms Beats 49.12%
+Memory 52.22MB Beats 29.54%
 
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
@@ -53,38 +50,40 @@ public class ThreeSum {
 
 	public List<List<Integer>> threeSum(int[] nums) {
 
-		List<List<Integer>> arrays = new ArrayList<>();
-		Set<String> strings = new HashSet<>();
-		Arrays.sort(nums);
+	        Arrays.sort(nums);
+	        List<List<Integer>> triplets = new ArrayList<>();
+	        int i = 0;
+	        while(i < nums.length){
+	            if(i > 0 && nums[i] == nums[i - 1]){
+	                i++;
+	                continue;
+	            }
+	            int j = i + 1;
+	            int k = nums.length - 1;
+	            while(j < k){
+	                int current = nums[i] + nums[j] + nums[k];
+	                if(current == 0){
+	                    List<Integer> vals = new ArrayList<>();
+	                    vals.add(nums[i]);
+	                    vals.add(nums[j]);
+	                    vals.add(nums[k]);
+	                    triplets.add(vals);
+	                    j += 1;
+	                    k -= 1;
+	                    while(j < k && nums[j] == nums[j - 1])
+	                        j++;
+	                    while(j < k && nums[k] == nums[k + 1])
+	                        k--;
+	                }
+	                else if(current > 0)
+	                    k--;
+	                else
+	                    j++;
+	            }
+	            i++;
+	        }
 
-		for (int left = 0; left < nums.length - 2; left++) {
-			int mid = left + 1;
-			int right = nums.length - 1;
-			while (mid < right) {
-				int sum = nums[left] + nums[mid] + nums[right];
-				if (sum == 0) {
-					int tmp[] = { nums[left], nums[mid], nums[right] };
-					Arrays.sort(tmp);
-					StringBuilder sb = new StringBuilder();
-					List<Integer> list = new ArrayList<>();
-					for (int e : tmp) {
-						sb.append(e + ",");
-						list.add(e);
-					}
-
-					if (!strings.contains(sb.toString())) {
-						strings.add(sb.toString());
-						arrays.add(list);
-					}
-				}
-				if (sum > 0)
-					right--;
-				else
-					mid++;
-			}
-		}
-
-		return arrays;
+                return triplets;
 	}
 
 }
