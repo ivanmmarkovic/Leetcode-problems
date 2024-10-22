@@ -1,24 +1,28 @@
-// https://leetcode.com/problems/clone-n-ary-tree/description/
+package trees;
 
-class CloneNaryTree {
+import java.util.ArrayList;
+import java.util.List;
 
-  // Definition for a Node.
-    class Node {
-        public int val; // Variable to store the node's value.
-        public List<Node> children; // List to store the node's children.
+//https://leetcode.com/problems/clone-n-ary-tree/description/
+
+public class CloneNaryTree {
+	
+	class Node {
+        public int val; 
+        public List<Node> children; 
     
-        // Constructor to initialize the node with no children.
+       
         public Node() {
             children = new ArrayList<Node>();
         }
     
-        // Constructor to initialize the node with a value and no children.
+       
         public Node(int val) {
             this.val = val;
             children = new ArrayList<Node>();
         }
     
-        // Constructor to initialize the node with a value and a list of children.
+      
         public Node(int val, ArrayList<Node> children) {
             this.val = val;
             this.children = children;
@@ -37,5 +41,5 @@ class CloneNaryTree {
         return new Node(root.val, children);
         
     }
-  
+
 }
