@@ -74,7 +74,29 @@ public class TwoSumIVInputIsABST {
 			this.right = right;
 		}
 	}
+	
+	public boolean findTarget(TreeNode root, int k) {
+		List<Integer> vals = new ArrayList<Integer>();
+		traverse(root, vals);
+		Set<Integer> set = new HashSet<Integer>(vals);
+		for(Integer v: vals) {
+			int d = k - v;
+			if(d == v)
+				continue;
+			if(set.contains(d))
+				return true;
+		}
+		return false;
+	}
 
+	private void traverse(TreeNode root, List<Integer> vals) {
+		if(root == null)
+			return;
+		traverse(root.left, vals);
+		vals.add(root.val);
+		traverse(root.right, vals);
+	}
+	/*
 	public boolean findTarget(TreeNode root, int k) {
 		if(root == null)
 			return false;
@@ -99,4 +121,5 @@ public class TwoSumIVInputIsABST {
 		nodes.add(root.val);
 		inorder(root.right, nodes);
 	}
+	*/
 }
