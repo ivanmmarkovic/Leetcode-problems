@@ -50,18 +50,20 @@ Constraints:
 
 */
 
-class ListNode {
+
+
+
+public class MergeNodesInBetweenZeros {
+
+    class ListNode {
 	int val;
 	ListNode next;
 	ListNode() {}
 	ListNode(int val) { this.val = val; }
 	ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
-
-
-public class MergeNodesInBetweenZeros {
+    }
 	
-	public ListNode mergeNodes(ListNode head) {
+    public ListNode mergeNodes(ListNode head) {
         if(head == null)
             return null;
         return mergeHelper(head.next, 0);
