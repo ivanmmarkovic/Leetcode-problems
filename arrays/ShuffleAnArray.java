@@ -78,6 +78,7 @@ public class ShuffleAnArray {
         
         Random rand = new Random();
         for(int i = 0; i < this.nums.length; i++){
+	    // int index = rand.nextInt(i, this.nums.length);
             int index = i + rand.nextInt(this.nums.length - i);
             int tmp = combination[i];
             combination[i] = combination[index];
