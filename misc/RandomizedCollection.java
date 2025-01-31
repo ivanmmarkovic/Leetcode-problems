@@ -60,38 +60,45 @@ Submissions
 
 class RandomizedCollection {
     
+    Map<Integer, Integer> elements;
+    List<Integer> vals;
     Random rand;
-    Map<Integer, List<Integer>> collection;
-    List<Integer> randomList;
     public RandomizedCollection() {
-        this.collection = new HashMap<>();
-        this.randomList = new ArrayList<>();
-        this.rand = new Random();
+        this.elements = new HashMap<>();
+        this.vals = new ArrayList<>();
+        rand = new Random();
     }
     
     public boolean insert(int val) {
-        boolean contains = false;
-        if(!this.collection.containsKey(val)){
-            this.collection.put(val, new ArrayList<>());
-            contains = true;
+        boolean contains;
+        if(this.elements.containsKey(val)){
+            contains = false;
+            this.elements.put(val, this.elements.get(val) + 1);
         }
-        if(this.collection.get(val).size() == 0)
+        else {
             contains = true;
-        this.collection.get(val).add(val);
-        this.randomList.add(val);
+            this.elements.put(val, 1);
+        }
+        this.vals.add(val);
         return contains;
     }
     
     public boolean remove(int val) {
-        if(!this.collection.containsKey(val) || this.collection.get(val).size() == 0)
-            return false;
-        this.collection.get(val).remove(new Integer(val));
-        this.randomList.remove(new Integer(val));
-        return true;
+        boolean contains = false;
+        if(this.elements.containsKey(val)){
+            contains = true;
+            if(this.elements.get(val) == 1)
+                this.elements.remove(val);
+            else 
+                this.elements.put(val, this.elements.get(val) - 1);
+            this.vals.remove(new Integer(val));
+        }
+        return contains;
     }
     
     public int getRandom() {
-        return this.randomList.get(this.rand.nextInt(this.randomList.size()));
+        int index = this.rand.nextInt(this.vals.size());
+        return this.vals.get(index);
     }
 }
 
