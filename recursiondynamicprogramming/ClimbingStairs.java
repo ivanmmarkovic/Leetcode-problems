@@ -49,17 +49,20 @@ Submissions
 */
 public class ClimbingStairs {
 	
-	private static Map<Integer, Integer> count = new HashMap<>();
-	
-	public int climbStairs(int n) {
-		if(n == 1) return 1;
-		if(n == 2) return 2;
-		
-		if(!count.containsKey(n)) 
-			count.put(n, climbStairs(n - 1) + climbStairs(n - 2));
-
-		return count.get(n);
-	}
+    private static Map<Integer, Integer> combinations = new HashMap<>();
+    public int climbStairs(int n) {
+        
+        if(n < 1)
+            return 0;
+        if(n == 1)
+            return 1;
+        if(n == 2)
+            return 2;
+        
+        if(!combinations.containsKey(n))
+            combinations.put(n, climbStairs(n - 1) + climbStairs(n - 2));
+        return combinations.get(n);
+    }
 	
 	/*
 	HashMap<Integer, Integer> counts = new HashMap<>();
