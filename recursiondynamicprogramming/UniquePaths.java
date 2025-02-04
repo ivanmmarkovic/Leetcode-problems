@@ -47,6 +47,26 @@ public class UniquePaths {
 	
 
     public int uniquePaths(int m, int n) {
+		
+		Integer[][] memo = new Integer[m - 1][n - 1];
+		return uniquePathsHelper(memo, m - 1, n - 1);
+		
+	}
+
+	private int uniquePathsHelper(Integer[][] memo, int m, int n) {
+		if(m < 0 || n < 0)
+			return 0;
+		if(m == 0 && n == 0)
+			return 1;
+		if(memo[m][n] == null) {
+			memo[m][n] = uniquePathsHelper(memo, m - 1, n) + uniquePathsHelper(memo, m, n - 1);
+		}
+		return memo[m][n];
+		
+	}
+	
+	/*
+    public int uniquePaths(int m, int n) {
         int matrix[][] = new int[m][n];
         matrix[0][0] = 1;
         traverse(m - 1, n - 1, matrix, m - 1, n - 1);
@@ -63,6 +83,7 @@ public class UniquePaths {
         matrix[x][y] = traverse(x - 1, y, matrix, m, n) + traverse(x, y - 1, matrix, m, n);
         return matrix[x][y];
     }
+	*/
 
     /*
     
