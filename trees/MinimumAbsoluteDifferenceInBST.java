@@ -63,23 +63,27 @@ public class MinimumAbsoluteDifferenceInBST {
 	}
 
 	public int getMinimumDifference(TreeNode root) {
-		if (root == null)
+		if(root == null)
 			return 0;
-		List<Integer> vals = new ArrayList<>();
-		inorder(root, vals);
-		int difference = Integer.MAX_VALUE;
-		for (int i = 0; i < vals.size() - 1; i++) {
-			int current = Math.abs(vals.get(i) - vals.get(i + 1));
-			difference = Math.min(difference, current);
+		List<Integer> vals = new ArrayList<Integer>();
+		traverse(root, vals);
+		
+		if(vals.size() == 1)
+			return 0;
+		
+		int min = Integer.MAX_VALUE;
+		for(int i = 0; i < vals.size() - 1; i++) {
+			min = Math.min(min, Math.abs(vals.get(i) - vals.get(i + 1)));
 		}
-		return difference;
+		
+		return min;
 	}
 
-	private void inorder(TreeNode root, List<Integer> vals) {
-		if (root == null)
+	private void traverse(TreeNode root, List<Integer> vals) {
+		if(root == null)
 			return;
-		inorder(root.left, vals);
+		traverse(root.left, vals);
 		vals.add(root.val);
-		inorder(root.right, vals);
+		traverse(root.right, vals);
 	}
 }
