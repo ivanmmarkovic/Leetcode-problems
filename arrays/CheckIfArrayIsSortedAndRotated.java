@@ -57,7 +57,32 @@ public class CheckIfArrayIsSortedAndRotated {
 	
 	public boolean check(int[] nums) {
         /*
-		int count = 0;
+	int indexOfMin = -1;
+        int minValue = Integer.MAX_VALUE;
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] < minValue){
+                minValue = nums[i];
+                indexOfMin = i;
+            }
+        }
+
+        if(indexOfMin == -1)
+            return true;
+
+        int count = 0;
+        int index = indexOfMin;
+
+        do{
+            if(nums[index] > nums[(index + 1) % nums.length])
+                count++;
+            index = (index + 1) % nums.length;
+        }while(index != indexOfMin);
+
+        return count <= 1;
+
+ 	//---------------------------------------------------------------------------
+ 		int count = 0;
 		for (int i = 0; i < nums.length - 1; i++) {
 			if(nums[i] > nums[i + 1])
 				count++;
