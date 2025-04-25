@@ -62,6 +62,20 @@ Constraints:
 public class DeleteTheMiddleNode {
     
     public ListNode deleteMiddle(ListNode head) {
+        if(head == null || head.next == null)
+            return null;
+
+        ListNode slow = head, fast = head.next.next;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        slow.next = slow.next.next;
+        return head;
+    	
+    	/*
         if(head == null)
             return null;
         ListNode prev = null, slow = head, fast = head;
@@ -82,6 +96,33 @@ public class DeleteTheMiddleNode {
             return head.next;
         prev.next = slow.next;
         return head;
+        */
+    	
+    	
+    	
+        /*
+	    if(head == null) 
+				return null;
+		
+			
+		ListNode slow = head, fast = head;
+		ListNode prev = null;
+		while(fast.next != null && fast.next.next != null) {
+			prev = slow;
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+	    if(fast.next != null){
+	        prev = slow;
+			slow = slow.next;
+	    }
+		if(prev == null) 
+			head = head.next;
+		else 
+			prev.next = slow.next;
+		
+		return head;
+         */
     }
 
 }
