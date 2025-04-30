@@ -35,6 +35,30 @@ class PartitionList {
 	}
 
     public ListNode partition(ListNode head, int x) {
+
+	/*
+        ListNode leftNode = new ListNode(0), left = leftNode;
+		ListNode rightNode = new ListNode(0), right = rightNode;
+		
+		while(head != null) {
+			if(head.val < x) {
+				left.next = head;
+				left = left.next; 
+                head = head.next;
+                left.next = null; // break cycle
+			}
+			else {
+				right.next = head;
+				right = right.next;
+                head= head.next;
+                right.next = null; // break cycle
+			}
+		}
+		
+		left.next = rightNode.next;
+		return leftNode.next;
+        
+        */
         
         ListNode left = new ListNode(), l = left;
         ListNode right = new ListNode(), r = right;
