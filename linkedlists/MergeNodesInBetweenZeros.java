@@ -62,7 +62,36 @@ public class MergeNodesInBetweenZeros {
 	ListNode(int val) { this.val = val; }
 	ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
-	
+    /*
+    //Runtime 5ms Beats 82.93%
+    // Memory 81.86MB Beats 62.24%
+
+    public ListNode mergeNodes(ListNode head) {
+		
+		if(head == null)
+			return null;
+		
+		ListNode merged = new ListNode(0), m = merged;
+		ListNode h = head.next;
+		
+		int sum = 0;
+		while(h != null) {
+			if(h.val != 0) {
+				sum += h.val;
+				h = h.next;
+			}
+			else {
+				m.next = new ListNode(sum);
+				m = m.next;
+				h = h.next;
+				sum = 0;
+			}
+		}
+		
+		return merged.next;
+		
+	}
+    */
     public ListNode mergeNodes(ListNode head) {
         if(head == null)
             return null;
