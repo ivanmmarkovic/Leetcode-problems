@@ -33,6 +33,8 @@ Submissions
 public class RotateString {
 
 	public boolean rotateString(String A, String B) {
+	if(A == null || B == null)
+	    return false;
         if(A.length() == 0 && B.length() == 0)
             return true;
         if(A.length() == 0)
@@ -51,4 +53,25 @@ public class RotateString {
         }
         return matches;
     }
+
+    /*
+    // Runtime 1ms Beats 22.44%
+    // Memory 42.18MB Beats 10.88%
+    public boolean rotateString(String s, String goal) {
+        
+        if(s == null || goal == null)
+	    return false;
+	if(s.length() != goal.length())
+	    return false;
+	
+	for (int i = 0; i < s.length(); i++) {
+	    String b = s.substring(i) + s.substring(0, i);
+	    if(b.equals(goal))
+		return true;
+	}
+	
+	return false;
+
+    }
+    */
 }
