@@ -97,4 +97,23 @@ public class SumRootToLeafNumbers {
 		helper(root.right, new StringBuilder(sb));
 	}
 
+	/*
+	public int sumNumbers(TreeNode root) {
+		
+		return sumNumbersHelper(root, new StringBuilder());
+		
+	}
+
+	private int sumNumbersHelper(TreeNode root, StringBuilder sb) {
+		// TODO Auto-generated method stub
+		if(root == null)
+			return 0;
+		sb.append(root.val);
+		if(root.left == null && root.right == null) 
+			return Integer.parseInt(sb.toString());
+		return sumNumbersHelper(root.left, new StringBuilder(sb)) + sumNumbersHelper(root.right, new StringBuilder(sb));
+		
+	} 
+	*/
+
 }
