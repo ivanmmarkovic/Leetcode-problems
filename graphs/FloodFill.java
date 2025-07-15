@@ -98,4 +98,31 @@ public class FloodFill {
         }
     }
 
+	/*
+ 	public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+		
+		boolean[][] visited = new boolean[image.length][image[0].length];
+		
+		floodFillHelper(image, visited, sr, sc, image[sr][sc], color);
+		
+		return image;
+		
+	}
+
+	private void floodFillHelper(int[][] image, boolean[][] visited, int x, int y, int startColor, int color) {
+
+		visited[x][y] = true;
+		image[x][y] = color;
+		if(y < image[x].length - 1 && image[x][y + 1] == startColor && !visited[x][y + 1])
+			floodFillHelper(image, visited, x, y + 1, startColor, color);
+		if(y > 0 && image[x][y - 1] == startColor && !visited[x][y - 1])
+			floodFillHelper(image, visited, x, y - 1, startColor, color);
+		if(x < image.length - 1 && image[x + 1][y] == startColor && !visited[x + 1][y])
+			floodFillHelper(image, visited, x + 1, y, startColor, color);
+		if(x > 0 && image[x - 1][y] == startColor && !visited[x - 1][y])
+			floodFillHelper(image, visited, x - 1, y, startColor, color);
+		
+	}
+    */
+
 }
