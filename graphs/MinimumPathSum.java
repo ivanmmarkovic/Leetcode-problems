@@ -224,5 +224,29 @@ public class MinimumPathSum {
         }
 
     }
+
+	/*
+ 	// Works in test, but Time Limit Exceeded
+ 	public int minPathSum(int[][] grid) {
+        Integer[][] values = new Integer[grid.length][grid[0].length];
+		
+		minPathSumHelper(grid, values, grid.length - 1, grid[0].length - 1, 0);
+		
+		return values[0][0];
+		
+	}
+
+	private void minPathSumHelper(int[][] grid, Integer[][] values, int x, int y, int sum) {
+		
+		if(x < 0 || y < 0)
+			return;
+		sum += grid[x][y];
+		if(values[x][y] == null || values[x][y] > sum) {
+			values[x][y] = sum;
+		}
+		minPathSumHelper(grid, values, x, y - 1, sum);
+		minPathSumHelper(grid, values, x - 1, y, sum);
+    }
+	*/
     
 }
