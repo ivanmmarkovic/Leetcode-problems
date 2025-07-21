@@ -80,4 +80,42 @@ class LinkedListInBinaryTreeBetter {
 		return helper(head.next, root.left) || helper(head.next, root.right);
 	}
 
+	/*
+ 	// Runtime 19ms Beats4.89%
+	// Memory 49.75MB Beats6.52%
+	public boolean isSubPath(ListNode head, TreeNode root) {
+		
+		List<String> words = new ArrayList<>();
+		StringBuilder sb = new StringBuilder();
+		traverse(root, sb, words);
+		
+		StringBuilder list = new StringBuilder();
+		while(head != null) {
+			list.append(head.val + ",");
+			head  = head.next;
+		}
+		
+		String l = list.toString();
+		for(String word: words) {
+			if(words.indexOf(l) != -1)
+				return true;
+		}
+		
+		return false;
+		
+	}
+
+	private void traverse(TreeNode root, StringBuilder sb, List<String> words) {
+		if(root == null)
+			return;
+		sb.append(root.val + ",");
+		if(root.left == null && root.right == null) {
+			words.add(sb.toString());
+			return;
+		}
+		traverse(root.left, new StringBuilder(sb), words);
+		traverse(root.right, new StringBuilder(sb), words);
+		
+	}
+	*/
 }
