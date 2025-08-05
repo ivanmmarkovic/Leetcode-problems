@@ -112,5 +112,24 @@ public class MergeNodesInBetweenZeros {
             return mergeHelper(head.next, sum);
         }
     }
-    
+	/*
+    public ListNode mergeNodes(ListNode head) {
+		
+		return mergeNodesHelper(head, 0);
+	}
+
+
+	private ListNode mergeNodesHelper(ListNode node, int sum) {
+		if(node == null)
+			return null;
+		if(node.val == 0 && sum == 0)
+			return mergeNodesHelper(node.next, 0);
+		if(node.val == 0) {
+			ListNode n = new ListNode(sum);
+			n.next = mergeNodesHelper(node.next, 0);
+			return n;
+		}
+		return mergeNodesHelper(node.next, sum + node.val);
+	}
+    */
 }
