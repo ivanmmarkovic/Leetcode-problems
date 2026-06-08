@@ -37,26 +37,23 @@ class PartitionList {
     public ListNode partition(ListNode head, int x) {
 
 	/*
-        ListNode leftNode = new ListNode(0), left = leftNode;
-		ListNode rightNode = new ListNode(0), right = rightNode;
-		
-		while(head != null) {
-			if(head.val < x) {
-				left.next = head;
-				left = left.next; 
-                head = head.next;
-                left.next = null; // break cycle
+        ListNode left = new ListNode(0), l = left;
+		ListNode right = new ListNode(0), r = right;
+		ListNode curr = head;
+		while(curr != null){
+			if(curr.val < x) {
+				l.next = curr;
+				l = l.next;
 			}
 			else {
-				right.next = head;
-				right = right.next;
-                head= head.next;
-                right.next = null; // break cycle
+				r.next = curr;
+				r = r.next;
 			}
+			curr = curr.next;
 		}
-		
-		left.next = rightNode.next;
-		return leftNode.next;
+		r.next = null; // break cycle
+		l.next = right.next;
+		return left.next;
         
         */
         
