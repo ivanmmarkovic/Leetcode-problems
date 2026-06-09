@@ -48,7 +48,37 @@ public class ReorderList {
 			this.next = next;
 		}
 	}
-	
+	/*
+	public void reorderList(ListNode head) {
+      List<ListNode> nodes = new ArrayList<>();
+		ListNode curr = head;
+		while(curr != null) {
+			nodes.add(curr);
+			curr = curr.next;
+		}
+		
+		int left = 0, right = nodes.size() - 1;
+		ListNode reordered = new ListNode(0), r = reordered;
+		while(left < right) {
+			r.next = nodes.get(left);
+			r = r.next;
+			r.next = nodes.get(right);
+			r = r.next;
+			
+			r.next = null;
+			left++;
+			right--;
+		}
+		
+		if(left == right) {
+			r.next = nodes.get(right);
+			r = r.next;
+			r.next = null;			
+		}
+		
+		head = reordered.next;
+    }
+	*/
 	public void reorderList(ListNode head) {
         if(head == null)
 			return;
